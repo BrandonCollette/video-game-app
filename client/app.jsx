@@ -1,7 +1,7 @@
 import React from 'react';
 import { Route, Link } from 'react-router-dom';
 import Home from './pages/home';
-import Search from './pages/search';
+import Game from './pages/game';
 
 export default class App extends React.Component {
   render() {
@@ -16,7 +16,7 @@ export default class App extends React.Component {
             <Home />
           </Route>
           <Route path="/search">
-            <Search />
+            <Game />
           </Route>
         </div>
     );
