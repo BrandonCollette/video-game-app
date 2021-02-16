@@ -1,0 +1,21 @@
+body {
+  background-image: url("images/132092-black-and-blue-geometric-abstract-background-vector-illustration.jpg");
+  background-attachment: fixed;
+}
+
+.bigInput {
+  width: 34.9vw;
+  margin-left: 2.9vw;
+}
+
+.navbar {
+  height: 10vh;
+  background: rgb(50, 210, 201);
+  background: linear-gradient(162deg, rgba(50, 210, 201, 1) 0%, rgba(35, 22, 221, 1) 90%, rgba(142, 87, 141, 1) 100%);
+  box-shadow: 0 5px 30px 5px;
+}
+
+.aContainer {
+  margin-left: 22vw;
+  margin-right: 22vw;
+}

@@ -4,7 +4,7 @@ function CommentItem({ event }) {
   const { name, commentBody } = event;
 
   return (
-        <div className="card bg-dark">
+        <div className="mx-0 card bg-dark aContainer">
             <div className="row my-1">
                 <div className="col-sm-10 mx-0">
                     <div className="card bg-dark">
@@ -56,7 +56,7 @@ export default class Game extends React.Component {
           <div className="container">
               <h1 className="text-center">comments</h1>
 
-              <ul className="list-group list-group-flush">
+              <ul className="list-group list-group-flush mx-0">
                   {
                       comments.length
                         ? comments.map(event => <CommentItem key={event.commentId} event={event} />)
