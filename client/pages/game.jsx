@@ -1,4 +1,5 @@
 import React from 'react';
+import Navbar from '../components/navbar';
 
 function CommentItem({ event }) {
   const { name, commentBody } = event;
@@ -49,20 +50,28 @@ export default class Game extends React.Component {
   render() {
     const { comments } = this.state;
     if (!comments) {
-      return <p className="text-center">LOADING COMMENTS...</p>;
+      return (
+          <div>
+              <Navbar />
+              <p className="text-center">LOADING COMMENTS...</p>;
+          </div>
+    )
     }
 
     return (
-          <div className="container">
-              <h1 className="text-center">comments</h1>
+          <div>
+              <Navbar />
+              <div className="container">
+                  <h1 className="text-center">comments</h1>
 
-              <ul className="list-group list-group-flush mx-0">
-                  {
-                      comments.length
-                        ? comments.map(event => <CommentItem key={event.commentId} event={event} />)
-                        : <li className="list-group-item">No Comments</li>
-                  }
-              </ul>
+                  <ul className="list-group list-group-flush mx-0">
+                      {
+                          comments.length
+                            ? comments.map(event => <CommentItem key={event.commentId} event={event} />)
+                            : <li className="list-group-item">No Comments</li>
+                      }
+                  </ul>
+              </div>
           </div>
     );
   }
