@@ -8,13 +8,60 @@ body {
   margin-left: 2.9vw;
 }
 
-.navbar {
+.defNavbar {
   height: 10vh;
   background: rgb(50, 210, 201);
   background: linear-gradient(162deg, rgba(50, 210, 201, 1) 0%, rgba(35, 22, 221, 1) 90%, rgba(142, 87, 141, 1) 100%);
   box-shadow: 0 5px 30px 5px;
 }
-
+.xbox{
+  background: rgb(23,213,0);
+  background: linear-gradient(162deg, rgba(23,213,0,1) 0%, rgba(38,148,0,1) 53%, rgba(1,116,0,1) 100%);
+}
+.xboxBackground{
+  background-image: url("images/132092-black-and-blue-geometric-abstract-background-vector-illustration.jpg");
+  height:100%;
+  width:100%;
+  position:fixed;
+  filter:hue-rotate(270deg);
+  z-index:-1;
+}
+.playstation{
+  background: rgb(23,42,255);
+  background: linear-gradient(162deg, rgba(23,42,255,1) 0%, rgba(0,15,148,1) 53%, rgba(0,4,110,1) 100%);
+}
+.playstationBackground{
+  background-image: url("images/132092-black-and-blue-geometric-abstract-background-vector-illustration.jpg");
+  height:100%;
+  width:100%;
+  position:fixed;
+  filter:hue-rotate(335deg);
+  z-index:-1;
+}
+.switch{
+  background: rgb(255,25,25);
+  background: linear-gradient(162deg, rgba(255,25,25,1) 0%, rgba(163,0,0,1) 53%, rgba(126,0,0,1) 100%);
+}
+.switchBackground{
+  background-image: url("images/132092-black-and-blue-geometric-abstract-background-vector-illustration.jpg");
+  height:100%;
+  width:100%;
+  position:fixed;
+  filter:hue-rotate(155deg);
+  z-index:-1;
+}
+.pc{
+  background: rgb(103,103,103);
+  background: linear-gradient(162deg, rgba(103,103,103,1) 0%, rgba(50,50,50,1) 75%, rgba(10,10,13,1) 100%);
+}
+.pcBackground{
+  background-image: url("images/132092-black-and-blue-geometric-abstract-background-vector-illustration.jpg");
+  height:100%;
+  width:100%;
+  position:fixed;
+  filter:grayscale(80%);
+  z-index:-1;
+}
 .aContainer {
   margin-left: 22vw;
   margin-right: 22vw;
