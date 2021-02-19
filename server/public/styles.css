@@ -7,6 +7,12 @@ body {
   width: 34.9vw;
   margin-left: 2.9vw;
 }
+.aContainer{
+  margin-left:22vw;
+  margin-right:22vw;
+  animation-name:blur;
+  animation-duration:1s;
+}
 
 .defNavbar {
   height: 10vh;
