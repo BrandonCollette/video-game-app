@@ -40,7 +40,7 @@ export default class Game extends React.Component {
   }
 
   componentDidMount() {
-    fetch('/api/game')
+    fetch('/api/comments')
       .then(res => res.json())
       .then(comments => {
         this.setState({ comments });
