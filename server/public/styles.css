@@ -72,3 +72,6 @@ body {
   margin-left: 22vw;
   margin-right: 22vw;
 }
+.gameImg{
+  filter:blur(0.5px);
+}

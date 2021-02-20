@@ -10,6 +10,8 @@ const db = new Pool({
 
 const app = express();
 
+
+
 app.use(staticMiddleware);
 
 app.get('/api/comments', (req, res) => {
@@ -29,19 +31,19 @@ app.get('/api/game',(req,res) => {
 
     fetch('https://api.igdb.com/v4/games', {
         method: 'post',
-        body:   'fields name,rating; limit 4; where rating > 99;',
+        body:   'fields name,rating,cover.url; limit 4; where rating > 90 & platforms = 48;',
         headers: { 'Accept': 'application/json',
                    'Client-ID': '7i5eel4xjpf149c9kf2jvt5u1tf31k',
                    'Authorization': 'Bearer rkcf8ockuwldran995w4wtll8hrno0',
         },
     })
         .then(res => res.json())
-        .then(games => {console.log('games[0].id: ',games[0].id);
-        res.json(games);
+        .then(games => {
+             res.json(games);
         });
 
-
 });
+
 
 app.listen(process.env.PORT, () => {
   // eslint-disable-next-line no-console
