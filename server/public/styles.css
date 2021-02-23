@@ -75,3 +75,9 @@ body {
 .gameImg{
   filter:blur(0.5px);
 }
+.c-title{
+  font-size:2.5vh;
+}
+.c-text{
+  font-size:1.7vh;
+}

@@ -6,6 +6,7 @@ import Xbox from './pages/xbox';
 import Playstation from './pages/playstation';
 import Switch from './pages/switch';
 import Pc from './pages/pc';
+import Search from './pages/search';
 
 
 export default class App extends React.Component {
@@ -18,11 +19,12 @@ export default class App extends React.Component {
           {/*  <Link className="px-4" to="/search">Search</Link> */}
           {/* </div> */}
 
+
             <Route exact path="/">
             <Home />
           </Route>
-          <Route path="/game">
-            <Game />
+          <Route path="/search">
+            <Search />
           </Route>
             <Route path="/xbox">
                 <Xbox />

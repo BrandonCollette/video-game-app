@@ -3,10 +3,9 @@ import Navbar from '../components/navbar';
 
 function GameItem({ event }) {
     const { name, rating, cover } = event;
-    console.log('event: ',event);
     return (
 
-                <div className="col-sm-3 px-0">
+                <div className="col-sm-2 px-0">
                     <div className="card bg-dark text-white h-100">
                         <img src={cover.url} className="card-img-top img-fluid gameImg" alt="..."></img>
                             <div className="card-body">
@@ -44,14 +43,18 @@ export default class Home extends React.Component {
             return (
                 <div>
                     <Navbar />
-                    <p className="text-center">LOADING GAMES...</p>;
+                    <p className="text-center">
+                        <div className="spinner-border text-light" role="status">
+                            <span className="visually-hidden">Loading...</span>
+                        </div>
+                    </p>;
                 </div>
             )
         }
 
         return (
             <div>
-                <Navbar/>
+                <Navbar />
                 <div className="aContainer">
                 <div className="mt-5">
                     <h1 className="display-5 text-white">POPULAR TITLES</h1>
