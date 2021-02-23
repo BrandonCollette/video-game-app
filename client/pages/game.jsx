@@ -60,7 +60,6 @@ export default class Game extends React.Component {
 
     return (
           <div>
-              <Navbar />
               <div className="container">
                   <h1 className="text-center">comments</h1>
 

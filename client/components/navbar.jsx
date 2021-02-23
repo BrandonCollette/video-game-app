@@ -1,44 +1,99 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import Search from '../pages/search';
 
-export default function Navbar(props){
+export default class Navbar extends React.Component{
+    constructor(props) {
+        super(props);
 
-    return (
-        <nav className={`navbar navbar-expand-lg navbar-light bg-dark mb-5 sticky-top defNavbar ${props.system}`} >
-            <div className="container-fluid">
-                <Link className="navbar-brand text-danger textGlow" to="/">GAMESCORE</Link>
-                <button className="navbar-toggler" type="button" data-bs-toggle="collapse"
-                        data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span className="navbar-toggler-icon"></span>
-                </button>
+        this.state = ({value:''},{searchResults:null});
 
-                <div className="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul className="navbar-nav  mb-2 mb-lg-0">
-                        <li className="nav-item mx-5">
-                            <Link className="nav-link active text-white" aria-current="page" to="/xbox">Xbox One</Link>
-                        </li>
+        this.handleChange = this.handleChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
+    }
 
-                        <li className="nav-item mx-5">
-                            <Link className="nav-link active text-white" aria-current="page" to="/playstation">Playstation 4</Link>
-                        </li>
+    handleChange(event){
+        this.setState({value:event.target.value});
+    }
 
-                        <li className="nav-item mx-5">
-                            <Link className="nav-link active text-white" aria-current="page" to="/switch">Nintendo Switch</Link>
-                        </li>
+    handleSubmit(event){
+        event.preventDefault();
+        const search = this.state.value;
+        // this.props.onSubmit(this.state.value);
+            fetch('/api/search', {
+                method:'POST',
+                headers: { "Content-Type": "application/json" },
+                body:'{"content":'+`"${search}"`+'}',
+            })
+                .then(res => res.json())
+                .then(results => {
+                    console.log('st results: ',results);
+                    this.setState({searchResults:results});
+                });
 
-                        <li className="nav-item mx-5">
-                            <Link className="nav-link active text-white" aria-current="page" to="/pc">PC</Link>
-                        </li>
 
-                    </ul>
-                    <form className="d-flex" action="">
-                        <input className="form-control me-2 col-sm-* input-lg bigInput" type="search"
-                               placeholder="Search" aria-label="Search"></input>
-                        <Link className="btn btn-outline-success" type="submit" to="/game">Search</Link>
-                    </form>
-                </div>
+    }
+
+
+    render() {
+        const { searchResults } = this.state;
+        if(!searchResults) {
+            return (
+                    <nav
+                        className={`navbar navbar-expand-lg navbar-light bg-dark mb-5 sticky-top defNavbar ${this.props.system}`}>
+                        <div className="container-fluid">
+                            <Link className="navbar-brand text-danger textGlow" to="/">GAMESCORE</Link>
+                            <button className="navbar-toggler" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                                    aria-expanded="false" aria-label="Toggle navigation">
+                                <span className="navbar-toggler-icon"/>
+                            </button>
+
+                            <div className="collapse navbar-collapse" id="navbarSupportedContent">
+                                <ul className="navbar-nav  mb-2 mb-lg-0">
+                                    <li className="nav-item mx-5">
+                                        <Link className="nav-link active text-white" aria-current="page" to="/xbox">Xbox
+                                            One</Link>
+                                    </li>
+
+                                    <li className="nav-item mx-5">
+                                        <Link className="nav-link active text-white" aria-current="page"
+                                              to="/playstation">Playstation
+                                            4</Link>
+                                    </li>
+
+                                    <li className="nav-item mx-5">
+                                        <Link className="nav-link active text-white" aria-current="page" to="/switch">Nintendo
+                                            Switch</Link>
+                                    </li>
+
+                                    <li className="nav-item mx-5">
+                                        <Link className="nav-link active text-white" aria-current="page"
+                                              to="/pc">PC</Link>
+                                    </li>
+
+                                </ul>
+                                <form className="d-flex" onSubmit={this.handleSubmit}>
+                                    <input className="form-control me-2 col-sm-* input-lg bigInput"
+                                           placeholder="Search" aria-label="Search" type='text'
+                                           value={this.state.value}
+                                           onChange={this.handleChange}/>
+                                    {/*<Link className="btn btn-outline-success" type="submit" value='submit' to="/search">Search</Link>*/}
+                                    <button className="btn btn-outline-success" type="submit" value='submit'
+                                            to="/search">Search
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    </nav>
+            );
+        }
+    else{
+        return(
+            <div>
+            <Search results={this.state.searchResults} search={this.state.value}/>
             </div>
-        </nav>
-    );
+        );
+        }
+    }
 }
