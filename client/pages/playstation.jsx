@@ -1,5 +1,6 @@
 import React from 'react';
 import Navbar from '../components/navbar';
+import PopularTitles from '../components/populartitles';
 
 export default function Playstation(props){
 
@@ -7,7 +8,7 @@ export default function Playstation(props){
         <>
             <div className="playstationBackground" />
             <Navbar system="playstation"/>
-            <h1 className="text-center">Playstation Page</h1>
+            <PopularTitles platform="48"/>
         </>
     );
 }

@@ -1,13 +1,14 @@
 import React from 'react';
 import Navbar from '../components/navbar';
+import PopularTitles from '../components/populartitles';
 
-export default function Switch(){
+export default function Switch(props){
 
     return(
         <>
             <div className="switchBackground" />
             <Navbar system="switch"/>
-            <h1 className="text-center">Switch Page</h1>
+            <PopularTitles platform="130"/>
         </>
     );
 }

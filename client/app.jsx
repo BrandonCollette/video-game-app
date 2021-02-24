@@ -38,6 +38,9 @@ export default class App extends React.Component {
             <Route path="/pc">
                 <Pc />
             </Route>
+            <Route path="/game">
+                <Game />
+            </Route>
         </div>
     );
   }
