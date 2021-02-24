@@ -74,7 +74,7 @@ export default class Search extends React.Component {
                 <Navbar />
                 <div className="aContainer">
                     <div className="my-5">
-                        <h5 className="text-white">TOP RESULTS FOR {this.props.search}</h5>
+                        <h5 className="text-white">TOP RESULTS FOR {this.props.search.toUpperCase()}</h5>
                         <hr className="text-white" />
                     </div>
                     <div className="row">

@@ -28,10 +28,14 @@ app.get('/api/comments', (req, res) => {
 });
 
 //loads popular titles
-app.get('/api/game',(req,res) => {
+app.use(express.json());
+
+app.post('/api/game',(req,res) => {
+    const platform = req.body.content;
+    console.log('paltform: ',platform);
     fetch('https://api.igdb.com/v4/games', {
         method: 'post',
-        body:   'fields name,rating,cover.url; limit 6; where rating > 90 & platforms = 48;',
+        body:   `fields name,rating,cover.url; limit 6; where rating > 80 & platforms = ${platform};`,
         headers: { 'Accept': 'application/json',
                    'Client-ID': '7i5eel4xjpf149c9kf2jvt5u1tf31k',
                    'Authorization': 'Bearer rkcf8ockuwldran995w4wtll8hrno0',

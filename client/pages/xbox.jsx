@@ -1,13 +1,14 @@
 import React from 'react';
 import Navbar from '../components/navbar';
+import PopularTitles from '../components/populartitles';
 
-export default function Xbox(props){
+export default function Playstation(props){
 
     return(
         <>
             <div className="xboxBackground" />
             <Navbar system="xbox"/>
-            <h1 className="text-center">Xbox Page</h1>
+            <PopularTitles platform="49"/>
         </>
     );
 }

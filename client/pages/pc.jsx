@@ -1,5 +1,6 @@
 import React from 'react';
 import Navbar from '../components/navbar';
+import PopularTitles from '../components/populartitles';
 
 export default function Pc(props){
 
@@ -7,7 +8,7 @@ export default function Pc(props){
         <>
             <div className="pcBackground" />
             <Navbar system="pc"/>
-            <h1 className="text-center">PC Page</h1>
+            <PopularTitles platform="6"/>
         </>
     );
 }
