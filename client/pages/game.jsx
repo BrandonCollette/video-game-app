@@ -5,7 +5,7 @@ function CommentItem({ event }) {
   const { name, commentBody } = event;
 
   return (
-        <div className="mx-0 card bg-dark aContainer">
+        <div className="mx-0 card bg-dark aContainer mb-2">
             <div className="row my-1">
                 <div className="col-sm-10 mx-0">
                     <div className="card bg-dark">
@@ -34,7 +34,7 @@ function GameCard({ event }) {
     const { name, rating, cover, platforms,summary} = event;
     console.log('event: ',event);
     return(
-            <div className="card bg-dark text-white my-2 mx-0" style={{padding:"2vh"}}>
+            <div className="card bg-dark text-white my-2 mx-0 gCard" style={{padding:"2vh"}}>
                 <h1 className="display-5 text-white">{name}</h1>
                 <hr className="text-white" />
 
@@ -63,7 +63,17 @@ function GameCard({ event }) {
                             <div className="col-sm">
                                 <div className="mt-3">USER RATING:</div>
                                 <h1><span className="badge bg-success m-1">{Math.round(rating)}</span></h1>
-                                <div style={{fontsize:"2vh"}}>Summary: {summary}
+                                <div  className="text-primary">
+                                    Summary:
+                                </div>
+                                <div >
+                                    {summary}
+                                </div>
+                                <div className="text-primary">
+                                    Platform:
+                                </div>
+                                <div>
+                                    {platforms[0].name}
                                 </div>
                             </div>
                             <div className="col-sm text-center">
@@ -96,8 +106,8 @@ export default class Game extends React.Component {
         this.setState({ comments });
       });
 
-      // const title = "DOOM Eternal";
-      const platform = '"fields name,rating,cover.image_id,platforms.name,summary; limit 1; where rating > 0 & id = 103298;"';
+       const title = this.props.titleId;
+      const platform = '"fields name,rating,cover.image_id,platforms.name,summary; limit 1; where rating > 0 & id = '+title+';"';
       fetch('/api/game',{
           method:'POST',
           headers: { "Content-Type": "application/json" },
@@ -116,7 +126,6 @@ export default class Game extends React.Component {
     if (!comments) {
       return (
           <div className="mx-0">
-              <GameNavbar />
               <div className="text-center">
                   <div className="spinner-border text-light" role="status">
                       <span className="visually-hidden">Loading...</span>
@@ -128,10 +137,6 @@ export default class Game extends React.Component {
 
     return (
           <div className="mx-0">
-              <GameNavbar />
-              <div className="aContainer">
-                  <div className="container mx-0 px-0">
-                      {/*<GameCard />*/}
                       <ul className="list-group list-group-flush mx-0">
                           {
                                 game
@@ -148,8 +153,6 @@ export default class Game extends React.Component {
                                 : <li className="list-group-item">No Comments</li>
                           }
                       </ul>
-                  </div>
-              </div>
           </div>
     );
   }

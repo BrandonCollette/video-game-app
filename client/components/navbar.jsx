@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Search from '../pages/search';
 import PopularTitles from '../components/populartitles';
+// import Game from '../pages/game';
 
 export default class Navbar extends React.Component{
     constructor(props) {
@@ -95,7 +96,7 @@ export default class Navbar extends React.Component{
                 </div>
             );
         }
-    else{
+    else if(searchResults){
         return(
             <div>
                 <nav
