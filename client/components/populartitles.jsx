@@ -23,17 +23,13 @@ export default class PopularTitles extends React.Component {
             .then(res => res.json())
             .then(games => {
                 this.setState({ games });
+                console.log('popGames: ',this.state.games)
             })
     }
 
 
     render() {
         const { games } = this.state;
-
-        // VanillaTilt.init(document.querySelectorAll(".vTilt"), {
-        //     max: 25,
-        //     speed: 400
-        // });
 
         if (!games) {
             return(
@@ -42,28 +38,29 @@ export default class PopularTitles extends React.Component {
                         <div className="spinner-border text-light" role="status">
                             <span className="visually-hidden">Loading...</span>
                         </div>
-                    </div>;
+                    </div>
                 </div>
             )
         }
-
-        return (
-            <div className="popular">
-                <div className="aContainer">
-                    <div className="mt-5">
-                        <h1 className="display-5 text-white">{this.props.title}</h1>
-                        <hr className="text-white" />
-                    </div>
-                    <div className="row">
-                        {
-                            games.length
-                                ? games.map((event,i) => <GameItem key={i} event={event} />)
-                                : <li className="list-group-item">No games</li>
-                        }
+    else if(games) {
+            return (
+                <div className="popular">
+                    <div className="aContainer">
+                        <div className="mt-5 toBeRemoved">
+                            <h1 className="display-5 text-white">{this.props.title}</h1>
+                            <hr className="text-white"/>
+                        </div>
+                        <div className="row">
+                            {
+                                games.length
+                                    ? games.map((event, i) => <GameItem key={i} event={event}/>)
+                                    : <li className="list-group-item">No games</li>
+                            }
+                        </div>
                     </div>
                 </div>
-            </div>
-        );
+            );
+        }
     }
 }
 
