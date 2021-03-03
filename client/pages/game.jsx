@@ -1,5 +1,5 @@
 import React from 'react';
-import Navbar from '../components/navbar';
+import GameNavbar from '../components/gamenavbar';
 
 function CommentItem({ event }) {
   const { name, commentBody } = event;
@@ -30,11 +30,12 @@ function CommentItem({ event }) {
   );
 }
 
-function GameItem() {
-
+function GameCard({ event }) {
+    const { name, rating, cover, platforms,summary} = event;
+    console.log('event: ',event);
     return(
-            <div className="card bg-dark text-white my-2" style={{padding:"2vh"}}>
-                <h1 className="display-5 text-white">DOOM ETERNAL</h1>
+            <div className="card bg-dark text-white my-2 mx-0" style={{padding:"2vh"}}>
+                <h1 className="display-5 text-white">{name}</h1>
                 <hr className="text-white" />
 
                     <div className="btn-group d-flex justify-content-center" role="group"
@@ -56,18 +57,13 @@ function GameItem() {
                     <div className="container text-white">
                         <div className="row">
                             <div className="col-sm">
-                                <img src=""
+                                <img src={`https://images.igdb.com/igdb/image/upload/t_cover_big/${cover.image_id}.jpg`}
                                      className="rounded float-start img-fluid w-100 mt-4" alt="..." />
                             </div>
                             <div className="col-sm">
                                 <div className="mt-3">USER RATING:</div>
-                                <h1><span className="badge bg-success m-1">95</span></h1>
-                                <div style={{fontsize:"2vh"}}>Summary: DOOM Eternal is the direct sequel to 2016's DOOM.
-                                    Developed by id Software, DOOM Eternal
-                                    delivers the ultimate combination of speed and power, along with the next leap in
-                                    push-forward,
-                                    first-person combat. As the DOOM Slayer, you'll return to take your vengeance
-                                    against the
+                                <h1><span className="badge bg-success m-1">{Math.round(rating)}</span></h1>
+                                <div style={{fontsize:"2vh"}}>Summary: {summary}
                                 </div>
                             </div>
                             <div className="col-sm text-center">
@@ -90,9 +86,7 @@ export default class Game extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-      comments: null
-    };
+    this.state = {comments: null}, {game:null};
   }
 
   componentDidMount() {
@@ -101,14 +95,28 @@ export default class Game extends React.Component {
       .then(comments => {
         this.setState({ comments });
       });
+
+      // const title = "DOOM Eternal";
+      const platform = '"fields name,rating,cover.image_id,platforms.name,summary; limit 1; where rating > 0 & id = 103298;"';
+      fetch('/api/game',{
+          method:'POST',
+          headers: { "Content-Type": "application/json" },
+          body:'{"content":'+`${platform}`+'}',
+      })
+          .then(res => res.json())
+          .then(game => {
+              this.setState({ game });
+              console.log('game:',game);
+          })
   }
 
   render() {
     const { comments } = this.state;
+    const { game } = this.state;
     if (!comments) {
       return (
-          <div>
-              <Navbar />
+          <div className="mx-0">
+              <GameNavbar />
               <div className="text-center">
                   <div className="spinner-border text-light" role="status">
                       <span className="visually-hidden">Loading...</span>
@@ -119,17 +127,24 @@ export default class Game extends React.Component {
     }
 
     return (
-          <div>
-              <Navbar />
+          <div className="mx-0">
+              <GameNavbar />
               <div className="aContainer">
-                  <div className="container">
-                      <GameItem />
+                  <div className="container mx-0 px-0">
+                      {/*<GameCard />*/}
+                      <ul className="list-group list-group-flush mx-0">
+                          {
+                                game
+                                  ? game.map((event,i) => <GameCard key={i} event={event} />)
+                                  : <li className="list-group-item">No Game</li>
+                          }
+                      </ul>
                       <h1 className="text-center">comments</h1>
 
                       <ul className="list-group list-group-flush mx-0">
                           {
                               comments.length
-                                ? comments.map(event => <CommentItem key={event.commentId} event={event} />)
+                                ? comments.map((event) => <CommentItem key={event.commentId} event={event} />)
                                 : <li className="list-group-item">No Comments</li>
                           }
                       </ul>

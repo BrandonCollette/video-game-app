@@ -1,5 +1,7 @@
 import React from 'react';
 import GameItem from '../components/gameitem';
+// import VanillaTilt from "vanilla-tilt";
+
 
 
 export default class PopularTitles extends React.Component {
@@ -27,9 +29,15 @@ export default class PopularTitles extends React.Component {
 
     render() {
         const { games } = this.state;
+
+        // VanillaTilt.init(document.querySelectorAll(".vTilt"), {
+        //     max: 25,
+        //     speed: 400
+        // });
+
         if (!games) {
-            return (
-                <div>
+            return(
+                <div className="popular position-absolute start-50">
                     <div className="text-center">
                         <div className="spinner-border text-light" role="status">
                             <span className="visually-hidden">Loading...</span>
@@ -40,10 +48,10 @@ export default class PopularTitles extends React.Component {
         }
 
         return (
-            <div>
+            <div className="popular">
                 <div className="aContainer">
                     <div className="mt-5">
-                        <h1 className="display-5 text-white">POPULAR TITLES</h1>
+                        <h1 className="display-5 text-white">{this.props.title}</h1>
                         <hr className="text-white" />
                     </div>
                     <div className="row">

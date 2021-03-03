@@ -35,7 +35,7 @@ app.post('/api/game',(req,res) => {
     console.log('paltform: ',platform);
     fetch('https://api.igdb.com/v4/games', {
         method: 'post',
-        body:   `fields name,rating,cover.url; limit 6; where rating > 80 & platforms = ${platform};`,
+        body:  platform,
         headers: { 'Accept': 'application/json',
                    'Client-ID': '7i5eel4xjpf149c9kf2jvt5u1tf31k',
                    'Authorization': 'Bearer rkcf8ockuwldran995w4wtll8hrno0',
@@ -54,7 +54,7 @@ app.post('/api/search',(req,res) => {
     const search = req.body.content;
         fetch('https://api.igdb.com/v4/games', {
             method: 'post',
-            body: `search "${search}"; fields name,cover.url,summary;`,
+            body: `search "${search}"; fields name,cover.image_id,summary,rating;`,
             headers: {
                 'Accept': 'application/json',
                 'Client-ID': '7i5eel4xjpf149c9kf2jvt5u1tf31k',

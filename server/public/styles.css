@@ -4,16 +4,9 @@ body {
 }
 
 .bigInput {
-  width: 34.9vw;
-  margin-left: 2.9vw;
+  width: 34vw;
+  margin-left: 3.4vw;
 }
-.aContainer{
-  margin-left:22vw;
-  margin-right:22vw;
-  animation-name:blur;
-  animation-duration:1s;
-}
-
 .defNavbar {
   height: 10vh;
   background: rgb(50, 210, 201);
@@ -69,15 +62,45 @@ body {
   z-index:-1;
 }
 .aContainer {
-  margin-left: 22vw;
-  margin-right: 22vw;
+  margin-left: 20vw;
+  margin-right: 20vw;
 }
 .gameImg{
-  filter:blur(0.5px);
+  height:25vh;
 }
 .c-title{
   font-size:2.5vh;
 }
 .c-text{
-  font-size:1.7vh;
+  font-size:1.5vh;
+  height:13vh;
+  overflow:hidden;
+}
+.hidden{
+  display:none;
+}
+.imgContainer{
+  position:relative;
+  transform-style:preserve-3d;
+}
+.ratingBadge{
+  position:absolute;
+  bottom:1vh;
+  border-style:solid;
+  transform:translateZ(20px) scaleY(1);
+  transform-origin:top;
+}
+.searchItem{
+  height:20vh;
+}
+.searchScore{
+  right:0;
+  margin-right:2px;
+  margin-bottom:2px;
+  width:10vw;
+}
+.text-danger{
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: white;
+  font-weight:bolder;
 }
