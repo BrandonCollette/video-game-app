@@ -24,7 +24,8 @@ app.get('/api/comments', (req, res) => {
   db.query(sql)
     .then(result => {
       res.json(result.rows);
-    });
+    })
+      .catch(err => console.error(err));
 });
 
 //loads popular titles
@@ -44,7 +45,8 @@ app.post('/api/game',(req,res) => {
         .then(res => res.json())
         .then(games => {
              res.json(games);
-        });
+        })
+        .catch(err => console.error(err));
 });
 
 //search for titles
@@ -64,7 +66,8 @@ app.post('/api/search',(req,res) => {
             .then(res =>res.json())
             .then(searchResults => {
                 res.json(searchResults);
-            });
+            })
+            .catch(err => console.error(err));
 
 });
 

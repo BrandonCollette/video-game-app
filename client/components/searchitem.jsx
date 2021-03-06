@@ -31,7 +31,7 @@ export default function SearchItem({ event }) {
         return(
             <div className="card w-100 bg-dark text-white my-1 px-0 searchItem toBeRemoved">
                 <div className="card-body">
-                    <img src="" className="rounded float-start img-fluid mt-1 ms-0 me-2 searchImg" alt="..." />
+                    <img src="" className="rounded float-start img-fluid mt-1 ms-0 me-2 searchImg" alt="..." onClick={clickButton} />
                     <h5><span className="badge bg-success ratingBadge m-auto">{Math.round(rating)}</span></h5>
                     <h5 className="card-title c-title">{name}</h5>
                     <p className="card-text c-text">{summary}</p>
@@ -45,7 +45,7 @@ export default function SearchItem({ event }) {
 
             <div className="card w-100 bg-dark text-white my-1 px-0 searchItem toBeRemoved">
                 <div className="card-body">
-                    <img src={`https://images.igdb.com/igdb/image/upload/t_cover_small/${cover.image_id}.jpg`} className="mb-3 rounded float-start img-fluid mt-1 ms-0 me-2 searchImg" alt="..."/>
+                    <img src={`https://images.igdb.com/igdb/image/upload/t_cover_small/${cover.image_id}.jpg`} className="mb-3 rounded float-start img-fluid mt-1 ms-0 me-2 searchImg" alt="..." onClick={clickButton} />
                     <h5><span className="badge bg-success ratingBadge m-auto">{Math.round(rating)}</span></h5>
                     <h5 className="card-title c-title">{name}</h5>
                     <p className="card-text c-text">{summary}</p>
