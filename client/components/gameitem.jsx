@@ -33,7 +33,7 @@ export default function GameItem({ event }) {
                 <div className="card bg-dark text-white h-100">
                     <div className="imgContainer vTilt">
                         <img src={`https://images.igdb.com/igdb/image/upload/t_cover_big/${cover.image_id}.jpg`}
-                             className="card-img-top img-fluid gameImg" alt="..."/>
+                             className="card-img-top img-fluid gameImg" alt="..." onClick={clickButton} />
                         <h5><span className="badge bg-success ratingBadge">{Math.round(rating)}</span></h5>
                     </div>
                     <div className="card-body d-flex flex-column">

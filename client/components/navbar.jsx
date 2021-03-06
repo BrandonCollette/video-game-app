@@ -31,9 +31,10 @@ export default class Navbar extends React.Component{
                 .then(res => res.json())
                 .then(results => {
                     this.setState({searchResults:results});
+                    // this.setState({value:''});
                 });
 
-
+        this.setState({searchResults:null});
     }
 
 
