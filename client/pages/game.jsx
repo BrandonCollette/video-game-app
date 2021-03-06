@@ -31,7 +31,7 @@ function CommentItem({ event }) {
 }
 
 function GameCard({ event }) {
-    const { name, rating, cover, platforms,summary,involved_companies,genres,age_ratings,screenshots} = event;
+    const { name, rating, cover, platforms,summary,involved_companies,genres,age_ratings,screenshots,videos} = event;
     console.log('gevent: ',event);
     let ageRating = null;
     let company = "unknown";
@@ -213,6 +213,13 @@ if(screenClicked==="screenshots"){
 
 }
 if(screenClicked==="trailer"){
+    let vidSrc = "";
+    if(!videos){
+        vidSrc = "https://www.youtube.com/embed/erVJAAcGlgw";
+    }
+    else{
+        vidSrc = "https://www.youtube.com/embed/"+videos[0].video_id;
+    }
     return(
         <div className="card bg-dark text-white my-2 mx-0 gCard" style={{padding: "2vh"}}>
             <h1 className="display-5 text-white text-center">{name}</h1>
@@ -232,6 +239,13 @@ if(screenClicked==="trailer"){
                 <label className="btn btn-outline-primary buttonWidth"
                        htmlFor="btnradio3" onClick={trailerButton}>TRAILER</label>
             </div>
+
+            <div className="iframe-container">
+            <iframe width="560" height="315" src={vidSrc} frameBorder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen />
+            </div>
+
         </div>
     );
 }
@@ -257,7 +271,7 @@ export default class Game extends React.Component {
       });
 
        const title = this.props.titleId;
-      const platform = '"fields name,rating,cover.image_id,platforms.name,summary,involved_companies.company.name,genres.name,age_ratings.rating,screenshots.image_id; limit 1; where rating > 0 & id = '+title+';"';
+      const platform = '"fields name,rating,cover.image_id,platforms.name,summary,involved_companies.company.name,genres.name,age_ratings.rating,screenshots.image_id,videos.video_id; limit 1; where rating > 0 & id = '+title+';"';
       fetch('/api/game',{
           method:'POST',
           headers: { "Content-Type": "application/json" },
@@ -300,8 +314,6 @@ export default class Game extends React.Component {
                                     </div>
                           }
                       </ul>
-                      <h1 className="text-center">comments</h1>
-
                       <ul className="list-group list-group-flush mx-0">
                           {
                               comments.length
