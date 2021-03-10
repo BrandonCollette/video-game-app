@@ -16,9 +16,10 @@ app.use(staticMiddleware);
 
 
 // loads comments
-app.get('/api/comments', (req, res) => {
+app.get('/api/comments/:id', (req, res) => {
+    const gameId = req.params.id;
   const sql = `
-  select * from comments
+  select * from comments where "gameId" = '${gameId}'
   `;
 
   db.query(sql)
@@ -28,12 +29,34 @@ app.get('/api/comments', (req, res) => {
       .catch(err => console.error(err));
 });
 
+
+//post comments
+app.use(express.json());
+
+app.post('/api/comments',(req,res) => {
+    const name = req.body.content[1];
+    const comment = req.body.content[0];
+    const gameId = req.body.content[2];
+    const sql = `
+    insert into "comments" ("name","commentBody","gameId")
+    values('${name}','${comment}','${gameId}');
+    `;
+
+    db.query(sql)
+        .then(result =>{
+            console.log('result: ',result);
+            res.json(result.rows);
+        })
+        .catch(err => console.error(err));
+});
+
+
+
 //loads popular titles
 app.use(express.json());
 
 app.post('/api/game',(req,res) => {
     const platform = req.body.content;
-    console.log('paltform: ',platform);
     fetch('https://api.igdb.com/v4/games', {
         method: 'post',
         body:  platform,

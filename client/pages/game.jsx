@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Carousel from "../components/carousel";
+import PostComment from '../components/postcomment';
 
 function CommentItem({ event }) {
   const { name, commentBody } = event;
@@ -9,13 +10,12 @@ function CommentItem({ event }) {
             <div className="row my-1">
                 <div className="col-sm-10 mx-0">
                     <div className="card bg-dark">
-                        <div className="card-heaader text-white my-3">
+                        <div className="card-heaader text-white">
+                            <h5 className="card-title">{name}</h5>
                         </div>
                         <div className="card-body bg-white">
-                            <h5 className="card-title">{name}</h5>
                             <p className="card-text">{commentBody}</p>
                         </div>
-                        <a href="#" className="btn btn-primary w-25">Submit</a>
                     </div>
                 </div>
                 <div className="col-sm-2 mx-0 my-auto">
@@ -263,14 +263,20 @@ export default class Game extends React.Component {
     this.state = {comments: null}, {game:null};
   }
 
+//fetch comments
   componentDidMount() {
-    fetch('/api/comments')
+      const title = this.props.titleId;
+      const titleStr = JSON.stringify(this.props.titleId);
+    fetch('/api/comments/'+titleStr,{
+        method:'GET',
+        headers: { "Content-Type": "application/json" },
+    })
       .then(res => res.json())
       .then(comments => {
         this.setState({ comments });
       });
 
-       const title = this.props.titleId;
+       console.log('wtitle: ',title);
       const platform = '"fields name,rating,cover.image_id,platforms.name,summary,involved_companies.company.name,genres.name,age_ratings.rating,screenshots.image_id,videos.video_id; limit 1; where rating > 0 & id = '+title+';"';
       fetch('/api/game',{
           method:'POST',
@@ -287,6 +293,8 @@ export default class Game extends React.Component {
   render() {
     const { comments } = this.state;
     const { game } = this.state;
+      const title = this.props.titleId;
+      const titleStr = JSON.stringify(this.props.titleId);
     if (!comments) {
       return (
           <div className="mx-0">
@@ -314,6 +322,7 @@ export default class Game extends React.Component {
                                     </div>
                           }
                       </ul>
+                      <PostComment gameId={titleStr} />
                       <ul className="list-group list-group-flush mx-0">
                           {
                               comments.length
