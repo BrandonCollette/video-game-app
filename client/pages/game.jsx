@@ -2,34 +2,6 @@ import React, { useState } from 'react';
 import Carousel from "../components/carousel";
 import PostComment from '../components/postcomment';
 
-function CommentItem({ event }) {
-  const { name, commentBody } = event;
-
-  return (
-        <div className="mx-0 card bg-dark aContainer mb-2">
-            <div className="row my-1">
-                <div className="col-sm-10 mx-0">
-                    <div className="card bg-dark">
-                        <div className="card-heaader text-white">
-                            <h5 className="card-title">{name}</h5>
-                        </div>
-                        <div className="card-body bg-white">
-                            <p className="card-text">{commentBody}</p>
-                        </div>
-                    </div>
-                </div>
-                <div className="col-sm-2 mx-0 my-auto">
-                    <div className="card">
-                        <div className="card-body text-center">
-                            <h1><span className="badge bg-secondary">0</span></h1>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-  );
-}
-
 function GameCard({ event }) {
     const { name, rating, cover, platforms,summary,involved_companies,genres,age_ratings,screenshots,videos} = event;
     console.log('gevent: ',event);
@@ -263,18 +235,9 @@ export default class Game extends React.Component {
     this.state = {comments: null}, {game:null};
   }
 
-//fetch comments
   componentDidMount() {
       const title = this.props.titleId;
       const titleStr = JSON.stringify(this.props.titleId);
-    fetch('/api/comments/'+titleStr,{
-        method:'GET',
-        headers: { "Content-Type": "application/json" },
-    })
-      .then(res => res.json())
-      .then(comments => {
-        this.setState({ comments });
-      });
 
        console.log('wtitle: ',title);
       const platform = '"fields name,rating,cover.image_id,platforms.name,summary,involved_companies.company.name,genres.name,age_ratings.rating,screenshots.image_id,videos.video_id; limit 1; where rating > 0 & id = '+title+';"';
@@ -295,17 +258,6 @@ export default class Game extends React.Component {
     const { game } = this.state;
       const title = this.props.titleId;
       const titleStr = JSON.stringify(this.props.titleId);
-    if (!comments) {
-      return (
-          <div className="mx-0">
-              <div className="text-center">
-                  <div className="spinner-border text-light" role="status">
-                      <span className="visually-hidden">Loading...</span>
-                  </div>
-              </div>
-          </div>
-    )
-    }
 
     return (
           <div className="mx-0">
@@ -322,14 +274,7 @@ export default class Game extends React.Component {
                                     </div>
                           }
                       </ul>
-                      <PostComment gameId={titleStr} />
-                      <ul className="list-group list-group-flush mx-0">
-                          {
-                              comments.length
-                                ? comments.map((event) => <CommentItem key={event.commentId} event={event} />)
-                                : <li className="list-group-item">No Comments</li>
-                          }
-                      </ul>
+                      <PostComment gameId={titleStr} title={titleStr} />
           </div>
     );
   }

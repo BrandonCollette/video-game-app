@@ -121,3 +121,17 @@ body {
   width:100%;
   height:100%;
 }
+.comInput{
+  margin-top:1vh;
+  height:10vh;
+  width:100%;
+}
+.nameInput{
+  width:50%;
+}
+.subButton{
+  height:6vh;
+  position:relative;
+  right:0;
+  top:5vh;
+}
