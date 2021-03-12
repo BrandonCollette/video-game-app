@@ -119,7 +119,7 @@ export default class PostComment extends React.Component{
                                        value={this.state.name}
                                        onChange={this.handleNameChange}/>
                                 <input className="form-control me-2 col-sm-* input-lg comInput"
-                                       placeholder="Comment" aria-label="Search" type='text'
+                                       placeholder="Leave a Comment" aria-label="Search" type='text'
                                        value={this.state.commentBody}
                                        onChange={this.handleCommentChange}/>
                                 {/*<Link className="btn btn-outline-success" type="submit" value='submit' to="/search" results={searchResults} search={this.state.value} >Search</Link>*/}
@@ -140,7 +140,7 @@ export default class PostComment extends React.Component{
                     {
                         comments.length
                             ? comments.map((event) => <CommentItem key={event.commentId} event={event} />)
-                            : <li className="list-group-item">No Comments</li>
+                            : <li className="list-group-item mb-3">No Comments</li>
                     }
                 </ul>
                 </>

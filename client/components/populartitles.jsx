@@ -4,6 +4,7 @@ import GameItem from '../components/gameitem';
 
 
 
+
 export default class PopularTitles extends React.Component {
     constructor(props) {
         super(props);
@@ -30,6 +31,7 @@ export default class PopularTitles extends React.Component {
 
     render() {
         const { games } = this.state;
+
 
         if (!games) {
             return(
