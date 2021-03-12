@@ -73,7 +73,14 @@ function GameCard({ event }) {
 if(screenClicked === "summary") {
     return (
         <div>
-            <div className="card bg-dark text-white my-2 mx-0 gCard" style={{padding: "2vh"}}>
+
+            <div className="behindBackground" />
+
+            <div className="gameBackground" >
+                <img src={`https://images.igdb.com/igdb/image/upload/t_1080p/${screenshots[0].image_id}.jpg`} alt="image 1" />
+            </div>
+
+            <div className="card bg-dark text-white mb-2 mt-1 mx-0 gCard" style={{padding: "2vh"}}>
                 <h1 className="display-5 text-white text-center">{name}</h1>
                 <hr className="text-white"/>
 
@@ -120,13 +127,22 @@ if(screenClicked === "summary") {
                             <h1><span className="badge bg-secondary">0</span></h1>
                             <i className="fas fa-arrow-alt-circle-left symGlow" style={{fontsize: "2vh"}}/>
                             <i className="fas fa-arrow-alt-circle-right symGlow" style={{fontsize: "2vh"}}/>
-                            <div className="gameDetails mt-4" style={{fontsize: "2vh"}}>
-                                <div className="text-primary"> Developer:</div>
-                                <div> {company}<br/></div>
-                                <div className="text-primary"> Genre(s):</div>
-                                <div>{genres[0].name}<br/></div>
-                                <div className="text-primary">(Age)Rating:</div>
-                                <div>{ageRating}</div>
+                            <div className="gameDetailsContainer mt-5" style={{fontsize: "2vh"}}>
+
+                                <div className="gameDetail mt-3">
+                                    <div className="text-primary"> Developer:</div>
+                                    <div> {company}<br/></div>
+                                </div>
+
+                                <div className="gameDetail mt-3">
+                                    <div className="text-primary"> Genre(s):</div>
+                                    <div>{genres[0].name}<br/></div>
+                                </div>
+
+                                <div className="gameDetail mt-3">
+                                    <div className="text-primary">(Age)Rating:</div>
+                                    <div>{ageRating}</div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -140,7 +156,15 @@ if(screenClicked === "summary") {
 }
 if(screenClicked==="screenshots"){
     return(
-        <div className="card bg-dark text-white my-2 mx-0 gCard" style={{padding: "2vh"}}>
+        <div>
+
+            <div className="behindBackground" />
+
+            <div className="gameBackground" >
+                <img src={`https://images.igdb.com/igdb/image/upload/t_1080p/${screenshots[0].image_id}.jpg`} alt="image 1" />
+            </div>
+
+        <div className="card bg-dark text-white mb-2 mt-1 mx-0 gCard" style={{padding: "2vh"}}>
             <h1 className="display-5 text-white text-center">{name}</h1>
             <hr className="text-white"/>
 
@@ -162,10 +186,10 @@ if(screenClicked==="screenshots"){
 
         <div id="gameCaro" className="carousel slide mt-4" data-bs-ride="carousel">
             <div className="carousel-inner">
-                <div className="carousel-item active">
-                    <img src={`https://images.igdb.com/igdb/image/upload/t_1080p/${screenshots[0].image_id}.jpg`}
-                         className="d-block w-100" alt="image 1"/>
-                </div>
+                {/*<div className="carousel-item active">*/}
+                {/*    <img src={`https://images.igdb.com/igdb/image/upload/t_1080p/${screenshots[0].image_id}.jpg`}*/}
+                {/*         className="d-block w-100" alt="image 1"/>*/}
+                {/*</div>*/}
                 <Carousel screenshots={screenshots} />
 
             </div>
@@ -181,6 +205,7 @@ if(screenClicked==="screenshots"){
             </button>
         </div>
         </div>
+            </div>
             );
 
 }
@@ -193,7 +218,15 @@ if(screenClicked==="trailer"){
         vidSrc = "https://www.youtube.com/embed/"+videos[0].video_id;
     }
     return(
-        <div className="card bg-dark text-white my-2 mx-0 gCard" style={{padding: "2vh"}}>
+        <div>
+
+            <div className="behindBackground" />
+
+            <div className="gameBackground" >
+                <img src={`https://images.igdb.com/igdb/image/upload/t_1080p/${screenshots[0].image_id}.jpg`} alt="image 1" />
+            </div>
+
+        <div className="card bg-dark text-white mb-2 mt-1 mx-0 gCard" style={{padding: "2vh"}}>
             <h1 className="display-5 text-white text-center">{name}</h1>
             <hr className="text-white"/>
 
@@ -218,6 +251,7 @@ if(screenClicked==="trailer"){
                     allowFullScreen />
             </div>
 
+        </div>
         </div>
     );
 }

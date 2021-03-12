@@ -9,7 +9,7 @@ export default class Navbar extends React.Component{
         super(props);
 
 
-        this.state = ({value:''}, {searchResults:null});
+        this.state = ({value:''}, {searchResults:null},{search:''});
 
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -21,6 +21,8 @@ export default class Navbar extends React.Component{
 
     handleSubmit(event){
         event.preventDefault();
+        this.setState({search:this.state.value});
+        console.log('searchvalue: ',this.state.search);
         const search = this.state.value;
         // this.props.onSubmit(this.state.value);
             fetch('/api/search', {
@@ -147,7 +149,7 @@ export default class Navbar extends React.Component{
                         </div>
                     </div>
                 </nav>
-            <Search results={searchResults} search={this.state.value}/>
+            <Search results={searchResults} search={this.state.search}/>
             </div>
         );
         }

@@ -135,3 +135,31 @@ body {
   right:0;
   top:5vh;
 }
+.gameDetailsContainer{
+
+}
+.gameDetail{
+
+}
+.gameBackground{
+  height:100%;
+  width:100%;
+  top:0;
+  left:0;
+  position:fixed;
+  z-index:-1;
+  filter:blur(15px);
+}
+.gameBackground img{
+  height:100%;
+  width:100%;
+}
+.behindBackground{
+  height:100%;
+  width:100%;
+  top:0;
+  left:0;
+  position:fixed;
+  z-index:-1;
+  background-color:black;
+}
