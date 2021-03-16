@@ -22,7 +22,6 @@ export default class Navbar extends React.Component{
     handleSubmit(event){
         event.preventDefault();
         this.setState({search:this.state.value});
-        console.log('searchvalue: ',this.state.search);
         const search = this.state.value;
         // this.props.onSubmit(this.state.value);
             fetch('/api/search', {
