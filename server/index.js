@@ -5,7 +5,10 @@ const { Pool } = require('pg');
 const fetch = require('node-fetch');
 
 const db = new Pool({
-  connectionString: process.env.DATABASE_URL
+  connectionString: process.env.DATABASE_URL,
+    ssl: {
+        rejectUnauthorized: false
+    }
 });
 
 const app = express();
@@ -144,6 +147,15 @@ app.post('/api/search',(req,res) => {
             })
             .catch(err => console.error(err));
 
+});
+
+
+app.use(staticMiddleware);
+
+app.use((req, res) => {
+    res.sendFile('/index.html', {
+        root: path.join(__dirname, 'public')
+    });
 });
 
 
