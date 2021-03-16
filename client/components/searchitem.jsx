@@ -6,7 +6,6 @@ import Game from "../pages/game";
 
 export default function SearchItem({ event }) {
     const { name, cover,summary,rating,id } = event;
-    console.log('sear hevent: ',event);
     let gameId = null;
 
 
@@ -19,7 +18,6 @@ export default function SearchItem({ event }) {
     // });
 
     function clickButton() {
-        console.log('thisId: ', id);
         gameId = id;
         // this.setState({clicked: true});
         // this.setState({titleId: id});

@@ -24,7 +24,6 @@ export default class PopularTitles extends React.Component {
             .then(res => res.json())
             .then(games => {
                 this.setState({ games });
-                console.log('popGames: ',this.state.games)
             })
     }
 

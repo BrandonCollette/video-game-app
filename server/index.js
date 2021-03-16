@@ -50,6 +50,58 @@ app.post('/api/comments',(req,res) => {
         .catch(err => console.error(err));
 });
 
+//post ratings
+app.use(express.json());
+
+app.post('/api/rating',(req,res) =>{
+    const rating = req.body.content[0];
+    const gameId = req.body.content[1];
+    // const ratingId = req.body.content[2];
+    const sql = `
+        insert into "rating" ("rating","gameId")
+        values('${rating}','${gameId}')
+    `;
+
+    db.query(sql)
+        .then(result =>{
+            res.json(result.rows);
+        })
+        .catch(err => console.error(err));
+});
+
+
+// app.use(staticMiddleware);
+
+//loads ratings
+app.get('/api/rating/:id',(req,res) => {
+    const gameId = req.params.id;
+    // const ratingId = req.params.ratingId;
+    console.log('gId: ',gameId);
+    const sql = `
+  select * from rating where "gameId" = '${gameId}'
+  `;
+
+    db.query(sql)
+        .then(result => {
+            res.json(result.rows);
+        })
+        .catch(err => console.error(err));
+});
+
+//delete comments
+app.delete('/api/comments/:id',(req,res) => {
+    const deleteId = req.params.id;
+    const sql = `
+    delete from "comments" where "commentId" = '${deleteId}'
+    `;
+
+    db.query(sql)
+        .then(result => {
+            res.json(result.rows);
+        })
+        .catch(err => console.error(err));
+
+});
 
 
 //loads popular titles

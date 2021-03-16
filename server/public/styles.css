@@ -163,3 +163,9 @@ body {
   z-index:-1;
   background-color:black;
 }
+.rateInput{
+  width:6vw;
+}
+.fa-times{
+  cursor:pointer;
+}
