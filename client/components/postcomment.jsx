@@ -50,7 +50,7 @@ export default class PostComment extends React.Component{
     constructor(props){
         super(props);
 
-        this.state = {name:'',commentBody:'',comments:null,newComment:0,rating:null,ratings:null,commentId:null,gameId:null};
+        this.state = {name:'',commentBody:'',comments:null,newComment:0,rating:'',ratings:null,commentId:null,gameId:null};
 
         this.handleNameChange = this.handleNameChange.bind(this);
         this.handleCommentChange = this.handleCommentChange.bind(this);
@@ -219,10 +219,7 @@ export default class PostComment extends React.Component{
                         comments.length
                             ? comments.map((event) => {
                                 return(
-                                <div>
                                 <CommentItem key={event.commentId} event={event} ratings={this.state.ratings} title={this.props.title}  />
-                                    {/*<i className="fas fa-times text-white position-absolute top-0 end-0 m-1" onClick={this.handleDelete} >delete </i>*/}
-                                </div>
                                 )
                             })
                             : <li className="list-group-item mb-3">No Comments</li>
