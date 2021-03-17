@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Carousel from "../components/carousel";
 import PostComment from '../components/postcomment';
+import GameRating from '../components/gamerating';
 
 function GameCard({ event }) {
     const { name, rating, cover, platforms,summary,involved_companies,genres,age_ratings,screenshots,videos} = event;
@@ -123,11 +124,12 @@ if(screenClicked === "summary") {
                             </div>
                         </div>
                         <div className="col-sm text-center">
-                            <div className="mt-3" style={{fontsize: "2vh"}}>RATE THIS GAME</div>
-                            <h1><span className="badge bg-secondary">0</span></h1>
-                            <i className="fas fa-arrow-alt-circle-left symGlow" style={{fontsize: "2vh"}}/>
-                            <i className="fas fa-arrow-alt-circle-right symGlow" style={{fontsize: "2vh"}}/>
-                            <div className="gameDetailsContainer mt-5" style={{fontsize: "2vh"}}>
+                            {/*<div className="mt-3" style={{fontsize: "2vh"}}>RATE THIS GAME</div>*/}
+                            {/*<h1><span className="badge bg-secondary">0</span></h1>*/}
+                            {/*<i className="fas fa-arrow-alt-circle-left symGlow" style={{fontsize: "2vh"}}/>*/}
+                            {/*<i className="fas fa-arrow-alt-circle-right symGlow" style={{fontsize: "2vh"}}/>*/}
+                            <GameRating />
+                            <div className="gameDetailsContainer mt-4" style={{fontsize: "2vh"}}>
 
                                 <div className="gameDetail mt-3">
                                     <div className="text-primary"> Developer:</div>

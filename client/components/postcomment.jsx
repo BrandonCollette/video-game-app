@@ -1,5 +1,5 @@
 import React from 'react';
-import Rating from '../components/rating';
+// import Rating from '../components/rating';
 
 
 function CommentItem({ event, ratings, title }) {
@@ -22,9 +22,9 @@ function CommentItem({ event, ratings, title }) {
     return (
         <div className="mx-0 card bg-dark aContainer mb-2">
             <div className="row my-1">
-                <div className="col-sm-10 mx-0">
-                    <div className="card bg-dark">
-                        <div className="card-heaader text-white">
+                <div className="col-sm-12 mx-0">
+                    <div className="card bg-dark mx-2">
+                        <div className="card-header text-white">
                             <h5 className="card-title">{name}</h5>
                         </div>
 
@@ -33,12 +33,12 @@ function CommentItem({ event, ratings, title }) {
                         </div>
                     </div>
                 </div>
-                <div className="col-sm-2 mx-0 my-auto">
-                    <div className="card bg-dark">
-                        <Rating ratingId={commentId} gameId={gameId} ratings={ratings} />
-                    </div>
+                {/*<div className="col-sm-2 mx-0 my-auto">*/}
+                {/*    <div className="card bg-dark">*/}
+                {/*        <Rating ratingId={commentId} gameId={gameId} ratings={ratings} />*/}
+                {/*    </div>*/}
                     <i className="fas fa-times text-white position-absolute top-0 end-0 m-1" onClick={handleDelete} />
-                </div>
+                {/*</div>*/}
             </div>
         </div>
     );
@@ -106,14 +106,14 @@ export default class PostComment extends React.Component{
                 headers: { "Content-Type": "application/json" },
             }).then(res => res.json()),
 
-            fetch('api/rating/'+titleStr,{
-                method:'GET',
-                headers: { "Content-Type": "application/json" },
-            }).then(res => res.json()),
+            // fetch('api/rating/'+titleStr,{
+            //     method:'GET',
+            //     headers: { "Content-Type": "application/json" },
+            // }).then(res => res.json()),
         ]).then(allResponses => {
             const response1 = allResponses[0];
-            const response2 = allResponses[1];
-            this.setState({comments:response1,ratings:response2});
+            // const response2 = allResponses[1];
+            this.setState({comments:response1});
             commentId = response1[response1.length-1].commentId;
             console.log('finresj: ',allResponses);
         });
@@ -137,7 +137,7 @@ export default class PostComment extends React.Component{
         const gameId = this.props.gameId;
         const gameStr = JSON.stringify(gameId);
         this.setState({ratings:this.state.rating,gameId:gameId});
-        if(name !== "" && comment !== "" && rating !== "") {
+        if(name !== "" && comment !== "") {
 
             Promise.all([
                 fetch('/api/comments',{
@@ -146,14 +146,14 @@ export default class PostComment extends React.Component{
                     body: '{"content":[' + `"${comment}"` + ',' + `"${name}"` + ',' + `"${gameId}"` + ']}',
                 }).then(res => res.json()),
 
-                fetch('api/rating',{
-                    method:'POST',
-                    headers: { "Content-Type": "application/json" },
-                    body: '{"content": ['+`"${rating}"`+','+`"${gameId}"`+','+`"${commentId}"`+']}',
-                }).then(res => res.json()),
+                // fetch('api/rating',{
+                //     method:'POST',
+                //     headers: { "Content-Type": "application/json" },
+                //     body: '{"content": ['+`"${rating}"`+','+`"${gameId}"`+','+`"${commentId}"`+']}',
+                // }).then(res => res.json()),
             ]).then(allResponses => {
                 const response1 = allResponses[0];
-                const response2 = allResponses[1];
+                // const response2 = allResponses[1];
                 console.log('post com,rat: ',allResponses);
                 this.reloadComments();
                 this.setState({newComment: this.state.newComment += 1});
@@ -180,7 +180,7 @@ export default class PostComment extends React.Component{
             <div className="mx-0 card bg-dark aContainer mb-2">
                 <div className="row my-1">
                     <div className="col-sm-12 mx-0">
-                        <div className="card bg-dark">
+                        <div className="card bg-dark mx-2">
                             <div className="card-heaader text-white my-3">
                             </div>
                             <form className="d-flex" onSubmit={this.handleSubmit}>
@@ -195,19 +195,19 @@ export default class PostComment extends React.Component{
                                 {/*<Link className="btn btn-outline-success" type="submit" value='submit' to="/search" results={searchResults} search={this.state.value} >Search</Link>*/}
                                 <button className="btn btn-primary w-25 subButton" type="submit" value='submit'>Submit</button>
 
-                                <div className="col-sm-2 mx-0 my-auto">
-                                    <div className="card bg-dark">
-                                        <div className="card-body text-center">
-                                            {/*<h1><span className="badge bg-secondary">0</span></h1>*/}
-                                            <h1>
-                                                <input className="rateInput form-control"
-                                                       placeholder="rate" type='text' aria-label="Search"
-                                                       value={this.state.rating}
-                                                       onChange={this.handleRatingChange} />
-                                            </h1>
-                                        </div>
-                                    </div>
-                                </div>
+                                {/*<div className="col-sm-2 mx-0 my-auto">*/}
+                                {/*    <div className="card bg-dark">*/}
+                                {/*        <div className="card-body text-center">*/}
+                                {/*            /!*<h1><span className="badge bg-secondary">0</span></h1>*!/*/}
+                                {/*            <h1>*/}
+                                {/*                <input className="rateInput form-control"*/}
+                                {/*                       placeholder="rate" type='text' aria-label="Search"*/}
+                                {/*                       value={this.state.rating}*/}
+                                {/*                       onChange={this.handleRatingChange} />*/}
+                                {/*            </h1>*/}
+                                {/*        </div>*/}
+                                {/*    </div>*/}
+                                {/*</div>*/}
 
                             </form>
                         </div>
