@@ -85,7 +85,7 @@ export default class Navbar extends React.Component{
                                            value={this.state.value}
                                            onChange={this.handleChange}/>
                                     {/*<Link className="btn btn-outline-success" type="submit" value='submit' to="/search" results={searchResults} search={this.state.value} >Search</Link>*/}
-                                    <button className="btn btn-outline-success" type="submit" value='submit' results={searchResults} search={this.state.value}
+                                    <button className="btn btn-outline-success searchButton" type="submit" value='submit' results={searchResults} search={this.state.value}
                                             to="/search">Search
                                     </button>
                                 </form>

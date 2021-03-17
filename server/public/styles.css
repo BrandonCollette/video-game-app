@@ -169,3 +169,43 @@ body {
 .fa-times{
   cursor:pointer;
 }
+
+@media only screen and (max-width: 980px){
+
+  .aContainer {
+    margin-left:5vh;
+    margin-right:5vh;
+  }
+  .carousel-item{
+    height:23vh;
+  }
+  .carousel-item img{
+    max-width: 100%;
+    max-height: 100%;
+  }
+  .gameImg{
+    height:25vh;
+    width:50vw;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top:2vh
+  }
+  .badge{
+    margin-left:18vw;
+  }
+  .navbar-collapse{
+    background:linear-gradient(162deg, rgba(50, 210, 201, 1) 0%, rgba(35, 22, 221, 1) 90%, rgba(142, 87, 141, 1) 100%);
+    text-align:center;
+  }
+  .bigInput{
+    margin:auto;
+    width:70%;
+    margin-bottom:2vh;
+  }
+  .searchButton{
+    margin-bottom:2vh;
+    margin-right:4vw;
+  }
+
+}
