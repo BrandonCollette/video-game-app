@@ -3,9 +3,33 @@ import Carousel from "../components/carousel";
 import PostComment from '../components/postcomment';
 import GameRating from '../components/gamerating';
 
-function GameCard({ event }) {
+function GameCard({ event, averageRating }) {
     const { name, rating, cover, platforms,summary,involved_companies,genres,age_ratings,screenshots,videos} = event;
     console.log('gevent: ',event);
+    // averageRating = averageRating += rating;
+    // averageRating = averageRating/2;
+
+    // averageRating[0].push(rating);
+    let allRatings = [];
+    let displayRating = 0;
+    // allRatings.push(rating);
+    if(averageRating){
+        allRatings = averageRating;
+        allRatings.push(rating);
+    }
+    for(let i=0;i<allRatings.length;i++){
+        displayRating = displayRating+=allRatings[i];
+    }
+    const endRating = displayRating/allRatings.length;
+    console.log('displayRating: ',displayRating);
+
+    console.log('theaverageRatingAll: ',averageRating);
+
+    if(Number.isNaN(averageRating)){
+        averageRating = rating;
+        console.log('no average mayny wow');
+    }
+    const gameId = event.id;
     let ageRating = null;
     let company = "unknown";
 
@@ -109,7 +133,7 @@ if(screenClicked === "summary") {
                         </div>
                         <div className="col-sm">
                             <div className="mt-3">USER RATING:</div>
-                            <h1><span className="badge bg-success m-1">{Math.round(rating)}</span></h1>
+                            <h1><span className="badge bg-success m-1 theRating">{Math.round(endRating)}</span></h1>
                             <div className="text-primary">
                                 Summary:
                             </div>
@@ -124,11 +148,9 @@ if(screenClicked === "summary") {
                             </div>
                         </div>
                         <div className="col-sm text-center">
-                            {/*<div className="mt-3" style={{fontsize: "2vh"}}>RATE THIS GAME</div>*/}
-                            {/*<h1><span className="badge bg-secondary">0</span></h1>*/}
-                            {/*<i className="fas fa-arrow-alt-circle-left symGlow" style={{fontsize: "2vh"}}/>*/}
-                            {/*<i className="fas fa-arrow-alt-circle-right symGlow" style={{fontsize: "2vh"}}/>*/}
-                            <GameRating />
+
+                            <GameRating gameId={gameId} finRating={allRatings} displayRating={endRating} />
+
                             <div className="gameDetailsContainer mt-4" style={{fontsize: "2vh"}}>
 
                                 <div className="gameDetail mt-3">
@@ -268,7 +290,9 @@ export default class Game extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = {comments: null}, {game:null};
+    this.state = {comments: null, game:null, rating:null};
+
+    this.averageRating = this.averageRating.bind(this);
   }
 
   componentDidMount() {
@@ -277,16 +301,32 @@ export default class Game extends React.Component {
 
        console.log('wtitle: ',title);
       const platform = '"fields name,rating,cover.image_id,platforms.name,summary,involved_companies.company.name,genres.name,age_ratings.rating,screenshots.image_id,videos.video_id; limit 1; where rating > 0 & id = '+title+';"';
-      fetch('/api/game',{
-          method:'POST',
-          headers: { "Content-Type": "application/json" },
-          body:'{"content":'+`${platform}`+'}',
-      })
-          .then(res => res.json())
-          .then(game => {
-              this.setState({ game });
-              console.log('game:',game);
+
+      Promise.all([
+          fetch('/api/game',{
+              method:'POST',
+              headers: { "Content-Type": "application/json" },
+              body:'{"content":'+`${platform}`+'}',
+          }).then(res => res.json()),
+          fetch('api/rating/'+titleStr,{
+                          method:'GET',
+                          headers: { "Content-Type": "application/json" },
+          }).then(res => res.json()),
+
+          ])
+          .then(allResponses => {
+              const response1 = allResponses[0];
+              const response2 = allResponses[1];
+              this.setState({ game:response1});
+              this.averageRating(response2);
           })
+  }
+
+  averageRating(ratings){
+      let finalRating = [];
+      ratings.map(score => finalRating.push(score.rating));
+      // finalRating = finalRating/ratings.length;
+      this.setState({rating:finalRating});
   }
 
   render() {
@@ -300,7 +340,7 @@ export default class Game extends React.Component {
                       <ul className="list-group list-group-flush mx-0">
                           {
                                 game
-                                  ? game.map((event,i) => <GameCard key={i} event={event} />)
+                                  ? game.map((event,i) => <GameCard key={i} event={event} averageRating={this.state.rating} />)
                                   :  <div className="mx-0">
                                         <div className="text-center">
                                             <div className="spinner-border text-light" role="status">

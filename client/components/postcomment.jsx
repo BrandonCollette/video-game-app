@@ -8,7 +8,7 @@ function CommentItem({ event, ratings, title }) {
     //delete comment
     console.log('titl: ',title);
      function handleDelete(){
-         const titleStr = title;
+         // const titleStr = title;
         console.log('deletethis: ',commentId);
         const deleteId = commentId;
         fetch('/api/comments/'+deleteId,{
@@ -20,7 +20,7 @@ function CommentItem({ event, ratings, title }) {
     }
 
     return (
-        <div className="mx-0 card bg-dark aContainer mb-2">
+        <div className="mx-0 card bg-dark aContainer mb-2 commentItem">
             <div className="row my-1">
                 <div className="col-sm-12 mx-0">
                     <div className="card bg-dark mx-2">
@@ -71,15 +71,15 @@ export default class PostComment extends React.Component{
                      headers: { "Content-Type": "application/json" },
             }).then(res => res.json()),
 
-            fetch('api/rating/'+titleStr,{
-                            method:'GET',
-                            headers: { "Content-Type": "application/json" },
-            }).then(res => res.json()),
+            // fetch('api/rating/'+titleStr,{
+            //                 method:'GET',
+            //                 headers: { "Content-Type": "application/json" },
+            // }).then(res => res.json()),
         ]).then(allResponses => {
             const response1 = allResponses[0];
-            const response2 = allResponses[1];
+            // const response2 = allResponses[1];
             console.log('allRes: ',allResponses);
-            this.setState({comments:response1,ratings:response2});
+            this.setState({comments:response1});
         });
 
         }

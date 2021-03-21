@@ -1,3 +1,12 @@
+@keyframes letterAnimation {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
 body {
   background-image: url("images/132092-black-and-blue-geometric-abstract-background-vector-illustration.jpg");
   background-attachment: fixed;
@@ -169,6 +178,36 @@ body {
 .fa-times{
   cursor:pointer;
 }
+.searchRating{
+  position:absolute;
+  left:0;
+  bottom:0;
+}
+.sortContainer{
+  position:absolute;
+  right:54%;
+  top:25.5vh;
+  height:6.2vh;
+  width:1vw;
+  display:flex;
+  flex-wrap:wrap;
+}
+.fa-sort-up{
+  color:#64f36e;
+  text-shadow:0 0 7px green;
+  animation-name:letterAnimation;
+  animation-duration:1.5s;
+  font-size:3vh;
+}
+.fa-sort-down{
+  color:#f94242;
+  text-shadow: 0 0 7px red;
+  margin-top:3vh;
+  animation-name:letterAnimation;
+  animation-duration:1.5s;
+  font-size:3vh;
+}
+
 
 @media only screen and (max-width: 980px){
 
