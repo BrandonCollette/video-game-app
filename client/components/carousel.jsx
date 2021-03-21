@@ -1,8 +1,6 @@
 import React from 'react';
 
 export default function Carousel({ screenshots }){
-    console.log('sbirthday length: ',screenshots.length);
-
     if(!screenshots){
         return(
             <h1>No Screenshots Available</h1>

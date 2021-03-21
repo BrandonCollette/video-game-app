@@ -39,7 +39,6 @@ export default function GameItem({ event }) {
                 }
                 endRating = (rating + finalRating)/(ratings.length+1);
                 setTheRating(endRating);
-                console.log('endRting: ',endRating);
             }
         }
     });
@@ -48,7 +47,6 @@ export default function GameItem({ event }) {
     //new area end
 
     function clickButton() {
-        console.log('thisId: ', id);
         gameId = id;
         // this.setState({clicked: true});
         // this.setState({titleId: id});

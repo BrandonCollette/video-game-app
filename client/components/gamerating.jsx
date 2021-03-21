@@ -18,9 +18,7 @@ export default class GameRating extends React.Component{
             headers: { "Content-Type": "application/json" },
             body: '{"content": ['+`"${JSON.stringify(this.state.rating)}"`+','+`"${JSON.stringify(this.props.gameId)}"`+']}',
         }).then(res => res.json())
-            .then(ratings =>{
-                console.log('posted new rating');
-            });
+            .then(ratings =>{});
 
 
         if(this.state.rating >= this.props.displayRating){
@@ -41,7 +39,6 @@ export default class GameRating extends React.Component{
             ratingSum+=ratingsArr[i];
         }
         const returnRating = ratingSum/ratingsArr.length;
-        console.log('returnRaTiNG: ',returnRating);
         $('.theRating').text(Math.round(returnRating));
     }
     rateUp(){
@@ -50,7 +47,6 @@ export default class GameRating extends React.Component{
         }
         else {
             this.setState({rating: this.state.rating += 10});
-            console.log('propsgaid: ',this.props.gameId);
         }
     }
     rateDown(){
@@ -62,7 +58,6 @@ export default class GameRating extends React.Component{
         }
     }
     render(){
-        console.log('thispropsfinratingwow: ',this.props.finRating);
         if(this.state.up === true){
             return(
                 <>

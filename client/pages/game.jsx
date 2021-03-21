@@ -5,14 +5,9 @@ import GameRating from '../components/gamerating';
 
 function GameCard({ event, averageRating }) {
     const { name, rating, cover, platforms,summary,involved_companies,genres,age_ratings,screenshots,videos} = event;
-    console.log('gevent: ',event);
-    // averageRating = averageRating += rating;
-    // averageRating = averageRating/2;
 
-    // averageRating[0].push(rating);
     let allRatings = [];
     let displayRating = 0;
-    // allRatings.push(rating);
     if(averageRating){
         allRatings = averageRating;
         allRatings.push(rating);
@@ -21,13 +16,10 @@ function GameCard({ event, averageRating }) {
         displayRating = displayRating+=allRatings[i];
     }
     const endRating = displayRating/allRatings.length;
-    console.log('displayRating: ',displayRating);
 
-    console.log('theaverageRatingAll: ',averageRating);
 
     if(Number.isNaN(averageRating)){
         averageRating = rating;
-        console.log('no average mayny wow');
     }
     const gameId = event.id;
     let ageRating = null;
@@ -84,7 +76,6 @@ function GameCard({ event, averageRating }) {
     const [screenClicked, setPage] = useState("summary");
 
     function screenButton(){
-        console.log('screen button much wow');
         setPage("screenshots");
     }
     function summaryButton(){
@@ -299,7 +290,6 @@ export default class Game extends React.Component {
       const title = this.props.titleId;
       const titleStr = JSON.stringify(this.props.titleId);
 
-       console.log('wtitle: ',title);
       const platform = '"fields name,rating,cover.image_id,platforms.name,summary,involved_companies.company.name,genres.name,age_ratings.rating,screenshots.image_id,videos.video_id; limit 1; where rating > 0 & id = '+title+';"';
 
       Promise.all([

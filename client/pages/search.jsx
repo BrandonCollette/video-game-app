@@ -42,7 +42,6 @@ export default class Search extends React.Component {
         this.state = {
             results: this.props.results,
         };
-        console.log('searchARes: ',this.state.results);
     }
 
     // onSearchSubmit() {

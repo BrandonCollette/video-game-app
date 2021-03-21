@@ -6,17 +6,12 @@ function CommentItem({ event, ratings, title }) {
     const { name, commentBody, commentId, gameId } = event;
     // console.log('itEvent: ',event);
     //delete comment
-    console.log('titl: ',title);
      function handleDelete(){
          // const titleStr = title;
-        console.log('deletethis: ',commentId);
         const deleteId = commentId;
         fetch('/api/comments/'+deleteId,{
             method:'DELETE'
-        }).then(() => {
-            console.log('comment: '+deleteId+' deleted');
-
-        });
+        }).then(() => {});
     }
 
     return (
@@ -57,7 +52,6 @@ export default class PostComment extends React.Component{
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleRatingChange = this.handleRatingChange.bind(this);
         this.reloadComments = this.reloadComments.bind(this);
-        // this.handleDelete = this.handleDelete.bind(this);
 
 
     }
@@ -71,35 +65,18 @@ export default class PostComment extends React.Component{
                      headers: { "Content-Type": "application/json" },
             }).then(res => res.json()),
 
-            // fetch('api/rating/'+titleStr,{
-            //                 method:'GET',
-            //                 headers: { "Content-Type": "application/json" },
-            // }).then(res => res.json()),
         ]).then(allResponses => {
             const response1 = allResponses[0];
             // const response2 = allResponses[1];
-            console.log('allRes: ',allResponses);
             this.setState({comments:response1});
         });
 
         }
 
-    // handleDelete() {
-    //     const titleStr = this.props.title;
-    //     console.log('deletethis: ',commentId);
-    //     // const deleteId = commentId;
-    //     // fetch('/api/comments/'+deleteId,{
-    //     //     method:'DELETE'
-    //     // }).then(() => {
-    //     //     console.log('comment: '+deleteId+' deleted');
-    //     //     this.reloadComments();
-    //     // });
-    // }
 
     reloadComments(){
         const titleStr = this.props.title;
 
-        console.log('reloading comments');
         Promise.all([
             fetch('/api/comments/'+titleStr,{
                 method:'GET',
@@ -115,7 +92,6 @@ export default class PostComment extends React.Component{
             // const response2 = allResponses[1];
             this.setState({comments:response1});
             commentId = response1[response1.length-1].commentId;
-            console.log('finresj: ',allResponses);
         });
     }
     handleNameChange(event){
@@ -129,7 +105,6 @@ export default class PostComment extends React.Component{
     }
     handleSubmit(event){
         event.preventDefault();
-        console.log('rateState: ',this.state.rating);
         const titleStr = this.props.title;
         const rating = this.state.rating;
         const comment = this.state.commentBody;
@@ -154,7 +129,6 @@ export default class PostComment extends React.Component{
             ]).then(allResponses => {
                 const response1 = allResponses[0];
                 // const response2 = allResponses[1];
-                console.log('post com,rat: ',allResponses);
                 this.reloadComments();
                 this.setState({newComment: this.state.newComment += 1});
 
