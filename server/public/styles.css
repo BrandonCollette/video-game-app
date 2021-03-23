@@ -218,6 +218,9 @@ body {
     margin-left:5vh;
     margin-right:5vh;
   }
+  .navTitle{
+    font-size:4vw;
+  }
   .carousel-item{
     height:23vh;
   }
@@ -226,7 +229,7 @@ body {
     max-height: 100%;
   }
   .gameImg{
-    height:30vh;
+    height:35vh;
     width:50vw;
     display: block;
     margin-left: auto;

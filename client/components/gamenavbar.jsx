@@ -51,23 +51,23 @@ export default class GameNavbar extends React.Component {
                             <div className="collapse navbar-collapse" id="navbarSupportedContent">
                                 <ul className="navbar-nav  mb-2 mb-lg-0">
                                     <li className="nav-item mx-5">
-                                        <Link className="nav-link active text-white " aria-current="page" to="/xbox">Xbox
+                                        <Link className="nav-link active text-white navTitle" aria-current="page" to="/xbox">Xbox
                                             One</Link>
                                     </li>
 
                                     <li className="nav-item mx-5">
-                                        <Link className="nav-link active text-white" aria-current="page"
+                                        <Link className="nav-link active text-white navTitle" aria-current="page"
                                               to="/playstation">Playstation
                                             4</Link>
                                     </li>
 
                                     <li className="nav-item mx-5">
-                                        <Link className="nav-link active text-white" aria-current="page" to="/switch">Nintendo
+                                        <Link className="nav-link active text-white navTitle" aria-current="page" to="/switch">Nintendo
                                             Switch</Link>
                                     </li>
 
                                     <li className="nav-item mx-5">
-                                        <Link className="nav-link active text-white" aria-current="page"
+                                        <Link className="nav-link active text-white navTitle" aria-current="page"
                                               to="/pc">PC</Link>
                                     </li>
 
