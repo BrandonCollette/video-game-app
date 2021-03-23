@@ -13,14 +13,17 @@ body {
 }
 
 .bigInput {
-  width: 34vw;
-  margin-left: 3.4vw;
+  width: 68vh;
+  margin-left: 11vh;
 }
 .defNavbar {
   height: 10vh;
   background: rgb(50, 210, 201);
   background: linear-gradient(162deg, rgba(50, 210, 201, 1) 0%, rgba(35, 22, 221, 1) 90%, rgba(142, 87, 141, 1) 100%);
   box-shadow: 0 5px 30px 5px;
+}
+.navTitle{
+  font-size:0.9vw;
 }
 .xbox{
   background: rgb(23,213,0);
@@ -223,7 +226,7 @@ body {
     max-height: 100%;
   }
   .gameImg{
-    height:25vh;
+    height:30vh;
     width:50vw;
     display: block;
     margin-left: auto;
