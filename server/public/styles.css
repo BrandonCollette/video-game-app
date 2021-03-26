@@ -79,6 +79,7 @@ body {
 }
 .gameImg{
   height:25vh;
+  cursor:pointer;
 }
 .c-title{
   font-size:2.5vh;
@@ -101,6 +102,12 @@ body {
   border-style:solid;
   transform:translateZ(20px) scaleY(1);
   transform-origin:top;
+}
+.symGlow{
+  cursor:pointer;
+}
+.searchImg{
+  cursor:pointer;
 }
 .searchItem{
   height:20vh;
@@ -209,6 +216,16 @@ body {
   animation-name:letterAnimation;
   animation-duration:1.5s;
   font-size:3vh;
+}
+.backArrow{
+  cursor:pointer;
+  position:absolute;
+  z-index:+1;
+  margin-top:2vh;
+  margin-left:1.5vh;
+}
+.backArrow:hover{
+  text-shadow: 0 0 8px red;
 }
 
 
