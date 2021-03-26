@@ -84,11 +84,14 @@ function GameCard({ event, averageRating }) {
     function trailerButton(){
         setPage("trailer");
     }
+    // function backButton(){
+    //     setPage("null");
+    // }
 
 
 if(screenClicked === "summary") {
     return (
-        <div>
+        <div className="entireCard">
 
             <div className="behindBackground" />
 
@@ -97,6 +100,7 @@ if(screenClicked === "summary") {
             </div>
 
             <div className="card bg-dark text-white mb-2 mt-1 mx-0 gCard" style={{padding: "2vh"}}>
+                {/*<i className="fas fa-arrow-left"  onClick={backButton} />*/}
                 <h1 className="display-5 text-white text-center">{name}</h1>
                 <hr className="text-white"/>
 
@@ -180,6 +184,7 @@ if(screenClicked==="screenshots"){
             </div>
 
         <div className="card bg-dark text-white mb-2 mt-1 mx-0 gCard" style={{padding: "2vh"}}>
+            {/*<i className="fas fa-arrow-left" />*/}
             <h1 className="display-5 text-white text-center">{name}</h1>
             <hr className="text-white"/>
 
@@ -242,6 +247,7 @@ if(screenClicked==="trailer"){
             </div>
 
         <div className="card bg-dark text-white mb-2 mt-1 mx-0 gCard" style={{padding: "2vh"}}>
+            {/*<i className="fas fa-arrow-left" />*/}
             <h1 className="display-5 text-white text-center">{name}</h1>
             <hr className="text-white"/>
 
@@ -273,6 +279,7 @@ if(screenClicked==="trailer"){
 
 
 
+
 }
 
 
@@ -284,6 +291,7 @@ export default class Game extends React.Component {
     this.state = {comments: null, game:null, rating:null};
 
     this.averageRating = this.averageRating.bind(this);
+    this.backButton = this.backButton.bind(this);
   }
 
   componentDidMount() {
@@ -319,6 +327,11 @@ export default class Game extends React.Component {
       this.setState({rating:finalRating});
   }
 
+  backButton(){
+      // $('.hideCard').addClass('hidden');
+      window.location.reload();
+  }
+
   render() {
     const { comments } = this.state;
     const { game } = this.state;
@@ -326,11 +339,18 @@ export default class Game extends React.Component {
       const titleStr = JSON.stringify(this.props.titleId);
 
     return (
-          <div className="mx-0">
+          <div className="mx-0 hideCard">
                       <ul className="list-group list-group-flush mx-0">
                           {
                                 game
-                                  ? game.map((event,i) => <GameCard key={i} event={event} averageRating={this.state.rating} />)
+                                  ? game.map((event,i) => {
+                                      return(
+                                          <div>
+                                              <i className="fas fa-arrow-left text-white backArrow" onClick={this.backButton} />
+                                              <GameCard key={i} event={event} averageRating={this.state.rating} />
+                                          </div>
+                                      )
+                                    })
                                   :  <div className="mx-0">
                                         <div className="text-center">
                                             <div className="spinner-border text-light" role="status">

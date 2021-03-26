@@ -3,6 +3,9 @@ const express = require('express');
 const staticMiddleware = require('./static-middleware');
 const { Pool } = require('pg');
 const fetch = require('node-fetch');
+const ClientError = require('./client-error'); // eslint-disable-line
+const errorMiddleware = require('./error-middleware');
+const path = require('path');
 
 const db = new Pool({
   connectionString: process.env.DATABASE_URL,
@@ -16,6 +19,7 @@ const app = express();
 
 
 app.use(staticMiddleware);
+
 
 
 // loads comments
@@ -47,7 +51,6 @@ app.post('/api/comments',(req,res) => {
 
     db.query(sql)
         .then(result =>{
-            console.log('result: ',result);
             res.json(result.rows);
         })
         .catch(err => console.error(err));
@@ -79,7 +82,6 @@ app.post('/api/rating',(req,res) =>{
 app.get('/api/rating/:id',(req,res) => {
     const gameId = req.params.id;
     // const ratingId = req.params.ratingId;
-    console.log('gId: ',gameId);
     const sql = `
   select * from rating where "gameId" = '${gameId}'
   `;
@@ -149,14 +151,12 @@ app.post('/api/search',(req,res) => {
 
 });
 
-
-app.use(staticMiddleware);
-
 app.use((req, res) => {
     res.sendFile('/index.html', {
         root: path.join(__dirname, 'public')
     });
 });
+app.use(errorMiddleware);
 
 
 app.listen(process.env.PORT, () => {
