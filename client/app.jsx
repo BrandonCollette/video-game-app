@@ -7,11 +7,13 @@ import Playstation from './pages/playstation';
 import Switch from './pages/switch';
 import Pc from './pages/pc';
 import Search from './pages/search';
+import Navbar from './components/navbar';
+import GameItem from './components/gameitem';
+import PopularTitles from './components/populartitles';
 
 
 export default class App extends React.Component {
   render() {
-
     return (
         <div>
           {/* <div className="text-center"> */}
@@ -38,9 +40,15 @@ export default class App extends React.Component {
             <Route path="/pc">
                 <Pc />
             </Route>
-            <Route path="/game">
-                <Game />
-            </Route>
+
+
+            <Route path="/game/:game/:userId" render={(props) => <Game {...props} />} />
+
+            <Route path="/search/:system/:search" render={(props) => <Navbar {...props} />} />
+
+
+
+
         </div>
     );
   }

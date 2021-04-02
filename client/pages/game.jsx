@@ -2,9 +2,13 @@ import React, { useState } from 'react';
 import Carousel from "../components/carousel";
 import PostComment from '../components/postcomment';
 import GameRating from '../components/gamerating';
+import Navbar from '../components/navbar';
+import { Route, Link, withRouter, useParams } from 'react-router-dom';
 
 function GameCard({ event, averageRating }) {
-    const { name, rating, cover, platforms,summary,involved_companies,genres,age_ratings,screenshots,videos} = event;
+    const {id, name, rating, cover, platforms,summary,involved_companies,genres,age_ratings,screenshots,videos} = event;
+
+    console.log('Id: ',id);
 
     let allRatings = [];
     let displayRating = 0;
@@ -288,15 +292,22 @@ export default class Game extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = {comments: null, game:null, rating:null};
+    this.state = {comments: null, game:null, rating:null, path:window.location.pathname, parameters:this.props.match.params};
 
     this.averageRating = this.averageRating.bind(this);
     this.backButton = this.backButton.bind(this);
+    // this.changeUrl = this.changeUrl.bind(this);
   }
 
   componentDidMount() {
-      const title = this.props.titleId;
-      const titleStr = JSON.stringify(this.props.titleId);
+      const title = this.state.parameters.userId;
+      const background = this.props.match.params.game+"Background";
+      $('.backgroundColor').addClass(background);
+      console.log('propspar: ',this.props.match.params);
+      // const titleStr = JSON.stringify(this.props.titleId);
+      const titleStr = JSON.stringify(this.state.parameters.userId);
+
+      // this.props.history.push(`/${titleStr}`);
 
       const platform = '"fields name,rating,cover.image_id,platforms.name,summary,involved_companies.company.name,genres.name,age_ratings.rating,screenshots.image_id,videos.video_id; limit 1; where rating > 0 & id = '+title+';"';
 
@@ -306,20 +317,29 @@ export default class Game extends React.Component {
               headers: { "Content-Type": "application/json" },
               body:'{"content":'+`${platform}`+'}',
           }).then(res => res.json()),
-          fetch('api/rating/'+titleStr,{
+          fetch('/api/rating/'+title,{
                           method:'GET',
                           headers: { "Content-Type": "application/json" },
           }).then(res => res.json()),
-
           ])
           .then(allResponses => {
               const response1 = allResponses[0];
               const response2 = allResponses[1];
               this.setState({ game:response1});
               this.averageRating(response2);
+              // this.props.history.push(`/${this.props.titleId}`);
           })
+
+
   }
 
+    // changeUrl(){
+  //     if(this.state.path === "/"){
+  //         window.history.replaceState(null, "New Page Title", `/${this.props.titleId}`);
+  //     }else {
+  //         window.history.replaceState(null, "New Page Title", `${this.state.path}/${this.props.titleId}`);
+  //     }
+  // }
   averageRating(ratings){
       let finalRating = [];
       ratings.map(score => finalRating.push(score.rating));
@@ -328,40 +348,48 @@ export default class Game extends React.Component {
   }
 
   backButton(){
-      // $('.hideCard').addClass('hidden');
+      window.history.replaceState(null, "New Page Title", `${window.location.origin}${this.state.path}`);
       window.location.reload();
   }
 
-  render() {
+  render()
+  {
     const { comments } = this.state;
     const { game } = this.state;
       const title = this.props.titleId;
-      const titleStr = JSON.stringify(this.props.titleId);
+      const titleStr = this.state.parameters.userId;
+      console.log('titleStr: ',titleStr);
 
     return (
-          <div className="mx-0 hideCard">
-                      <ul className="list-group list-group-flush mx-0">
-                          {
-                                game
-                                  ? game.map((event,i) => {
-                                      return(
-                                          <div>
-                                              <i className="fas fa-arrow-left text-white backArrow" onClick={this.backButton} />
-                                              <GameCard key={i} event={event} averageRating={this.state.rating} />
-                                          </div>
-                                      )
-                                    })
-                                  :  <div className="mx-0">
-                                        <div className="text-center">
-                                            <div className="spinner-border text-light" role="status">
-                                                <span className="visually-hidden">Loading...</span>
+        <div>
+            <div className="backgroundColor" />
+            <Navbar system={this.state.parameters.game} />
+            <div className="aContainer gameComp">
+              <div className="mx-0 hideCard">
+                          <ul className="list-group list-group-flush mx-0">
+                              {
+                                    game
+                                      ? game.map((event,i) => {
+                                            return(
+                                              <div key={i}>
+                                                  <i className="fas fa-arrow-left text-white backArrow" onClick={this.backButton} />
+                                                  <GameCard event={event} averageRating={this.state.rating} />
+                                              </div>
+                                          )
+                                        })
+                                      :  <div className="mx-0">
+                                            <div className="text-center">
+                                                <div className="spinner-border text-light" role="status">
+                                                    <span className="visually-hidden">Loading...</span>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                          }
-                      </ul>
-                      <PostComment gameId={titleStr} title={titleStr} />
-          </div>
+                              }
+                          </ul>
+                          <PostComment gameId={titleStr} title={titleStr} />
+              </div>
+            </div>
+        </div>
     );
-  }
+   }
 }

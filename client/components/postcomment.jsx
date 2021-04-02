@@ -154,7 +154,7 @@ export default class PostComment extends React.Component{
             <div className="mx-0 card bg-dark aContainer mb-2">
                 <div className="row my-1">
                     <div className="col-sm-12 mx-0">
-                        <div className="card bg-dark mx-2">
+                        <div className="card bg-dark mx-2 comments">
                             <div className="card-heaader text-white my-3">
                             </div>
                             <form className="d-flex" onSubmit={this.handleSubmit}>
