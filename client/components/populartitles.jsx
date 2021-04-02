@@ -54,7 +54,7 @@ export default class PopularTitles extends React.Component {
                         <div className="row">
                             {
                                 games.length
-                                    ? games.map((event, i) => <GameItem key={i} event={event}/>)
+                                    ? games.map((event, i) => <GameItem key={i} event={event} system={this.props.system}/>)
                                     : <li className="list-group-item">No games</li>
                             }
                         </div>

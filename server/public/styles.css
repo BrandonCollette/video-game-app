@@ -227,6 +227,11 @@ body {
 .backArrow:hover{
   text-shadow: 0 0 8px red;
 }
+.bruhSpin{
+  position:absolute;
+  top:15vh;
+  right:50%;
+}
 
 
 @media only screen and (max-width: 980px){

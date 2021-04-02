@@ -53,39 +53,46 @@ export default class Search extends React.Component {
     //             this.setState({ results });
     //         })
     // };
+    componentDidMount(){
+        // this.props.history.push(`/search/${this.state.results}`);
+    }
 
     render() {
         const { results } = this.state;
         if (!results) {
             return (
-                <div>
+                <div className="bruhSpin">
+                    {/*<Navbar system={this.props.system} />*/}
                     <p className="text-center">
                         <div className="spinner-border text-light" role="status">
                             <span className="visually-hidden">Loading...</span>
                         </div>
-                    </p>;
+                    </p>
                 </div>
             )
         }
-
-        return (
-            <div>
-                {/*<Navbar />*/}
-                <div className="aContainer">
-                    <div className="my-5 toBeRemoved">
-                        <h5 className="text-white">TOP RESULTS FOR {this.props.search.toUpperCase()}</h5>
-                        <hr className="text-white" />
-                    </div>
-                    <div className="row">
-                        {
-                            results.length
-                                ? results.map((event,i) => <SearchItem key={i} event={event} />)
-                                : <li className="list-group-item">No Results</li>
-                        }
+        else {
+            $('.bruhSpin').addClass('hidden');
+            return (
+                <div>
+                    {/*<Navbar system={this.props.system} />*/}
+                    <div className="aContainer">
+                        <div className="my-5 toBeRemoved">
+                            <h5 className="text-white">TOP RESULTS FOR {this.props.search.toUpperCase()}</h5>
+                            <hr className="text-white"/>
+                        </div>
+                        <div className="row">
+                            {
+                                results.length
+                                    ? results.map((event, i) => <SearchItem key={i} event={event}
+                                                                            system={this.props.system}/>)
+                                    : <li className="list-group-item">No Results</li>
+                            }
+                        </div>
                     </div>
                 </div>
-            </div>
-        );
+            );
+        }
     }
 
 

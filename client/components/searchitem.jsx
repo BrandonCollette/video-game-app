@@ -4,10 +4,9 @@ import Game from "../pages/game";
 // import VanillaTilt from "vanilla-tilt";
 
 
-export default function SearchItem({ event }) {
+export default function SearchItem({ event, system }) {
     const { name, cover,summary,rating,id } = event;
     let gameId = null;
-
 
     const [clicked, setClicked] = useState(false);
     const [titleId, setTitleId] = useState(null);
@@ -22,18 +21,20 @@ export default function SearchItem({ event }) {
         // this.setState({clicked: true});
         // this.setState({titleId: id});
         setTitleId(gameId);
-        setClicked(true);
+        // setClicked(true);
     }
 
     if(!cover && clicked === false){
         return(
             <div className="card w-100 bg-dark text-white my-1 px-0 searchItem toBeRemoved">
                 <div className="card-body">
-                    <img src="" className="rounded float-start img-fluid mt-1 ms-0 me-2 searchImg" alt="..." onClick={clickButton} />
+                    <Link to={`/game/${system}/${id}`} onClick={clickButton} >
+                        <img src="" className="rounded float-start img-fluid mt-1 ms-0 me-2 searchImg" alt="..."  />
+                    </Link>
                     {/*<h5><span className="badge bg-success ratingBadge m-auto searchRating">{Math.round(rating)}</span></h5>*/}
                     <h5 className="card-title c-title">{name}</h5>
                     <p className="card-text c-text">{summary}</p>
-                    <button href="" className="btn btn-primary searchScore" to="/game" onClick={clickButton}>Score</button>
+                    <Link className="btn btn-primary searchScore" to={`/game/${system}/${id}`} onClick={clickButton}>Score</Link>
                 </div>
             </div>
         )
@@ -43,11 +44,13 @@ export default function SearchItem({ event }) {
 
             <div className="card w-100 bg-dark text-white my-1 px-0 searchItem toBeRemoved">
                 <div className="card-body">
-                    <img src={`https://images.igdb.com/igdb/image/upload/t_cover_small/${cover.image_id}.jpg`} className="mb-3 rounded float-start img-fluid mt-1 ms-0 me-2 searchImg" alt="..." onClick={clickButton} />
+                    <Link to={`/game/${system}/${id}`} onClick={clickButton} >
+                        <img src={`https://images.igdb.com/igdb/image/upload/t_cover_small/${cover.image_id}.jpg`} className="mb-3 rounded float-start img-fluid mt-1 ms-0 me-2 searchImg" alt="..." />
+                    </Link>
                     {/*<h5><span className="badge bg-success ratingBadge m-auto searchRating">{Math.round(rating)}</span></h5>*/}
                     <h5 className="card-title c-title">{name}</h5>
                     <p className="card-text c-text">{summary}</p>
-                    <button href="" className="btn btn-primary position-absolute bottom-0 searchScore" to="/game" onClick={clickButton}>Score</button>
+                    <Link className="btn btn-primary position-absolute bottom-0 searchScore" to={`/game/${system}/${id}`} onClick={clickButton}>Score</Link>
                 </div>
             </div>
 
