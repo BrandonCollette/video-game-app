@@ -17,23 +17,21 @@ class Navbar extends React.Component{
         this.handleKey = this.handleKey.bind(this);
     }
 
-    handleChange(event){
-        this.setState({value:event.target.value});
+
+     async handleChange(event) {
+        await this.setState({value:event.target.value});
         this.defineUrl();
     }
 
     defineUrl(){
         if(this.props.system === undefined){
             this.setState({address:"system/"+this.state.value});
-            // address = "system/"+this.state.value;
         }
         else{
             this.setState({address:this.props.system+"/"+this.state.value});
-            // address = this.props.system+"/"+this.state.value;
         }
     }
     componentDidMount(){
-        console.log('matchParamsnav: ',this.props.match.params);
         if(this.props.match.params.system) {
             const background = this.props.match.params.system+"Background";
             $('.colorBackground').addClass(background);
@@ -94,18 +92,10 @@ class Navbar extends React.Component{
 
 
     render() {
-        // let address = null;
-        // if(this.props.system === undefined){
-        //     address = "system/"+this.state.value;
-        // }
-        // else{
-        //     address = this.props.system+"/"+this.state.value;
-        // }
         const { searchResults } = this.state;
-        console.log('par: ',this.state.parameters);
         if(!searchResults && this.props.title1 === undefined){
             return(
-                <div>
+                <div className="gameNavBar">
                 <div className="colorBackground" />
                 <nav
                     className={`navbar navbar-expand-lg navbar-light bg-dark mb-5 sticky-top defNavbar ${this.state.system}`}>
@@ -162,7 +152,7 @@ class Navbar extends React.Component{
         }
         if(!searchResults) {
             return (
-                <div>
+                <div className="gameNavBar">
                 <div className="colorBackground" />
                     <nav
                         className={`navbar navbar-expand-lg navbar-light bg-dark mb-5 sticky-top defNavbar ${this.state.system}`}>
@@ -220,7 +210,7 @@ class Navbar extends React.Component{
         }
     else if(searchResults){
         return(
-            <div>
+            <div className="gameNavBar">
             <div className="colorBackground" />
                 <nav
                     className={`navbar navbar-expand-lg navbar-light bg-dark mb-5 sticky-top defNavbar ${this.state.system}`}>

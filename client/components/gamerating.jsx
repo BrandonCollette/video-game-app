@@ -13,7 +13,7 @@ export default class GameRating extends React.Component{
 
     }
     handleSubmit(){
-        fetch('api/rating',{
+        fetch('/api/rating',{
             method:'POST',
             headers: { "Content-Type": "application/json" },
             body: '{"content": ['+`"${JSON.stringify(this.state.rating)}"`+','+`"${JSON.stringify(this.props.gameId)}"`+']}',
@@ -58,6 +58,7 @@ export default class GameRating extends React.Component{
         }
     }
     render(){
+        console.log('propsgId: ',this.props.gameId);
         if(this.state.up === true){
             return(
                 <>
