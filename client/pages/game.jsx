@@ -8,8 +8,6 @@ import { Route, Link, withRouter, useParams } from 'react-router-dom';
 function GameCard({ event, averageRating }) {
     const {id, name, rating, cover, platforms,summary,involved_companies,genres,age_ratings,screenshots,videos} = event;
 
-    console.log('Id: ',id);
-
     let allRatings = [];
     let displayRating = 0;
     if(averageRating){
@@ -31,6 +29,10 @@ function GameCard({ event, averageRating }) {
 
     if(involved_companies){
         company = involved_companies[0].company.name;
+    }
+    let genre = "none";
+    if(genres){
+        genre = genres[0].name;
     }
 
     if(age_ratings) {
@@ -159,7 +161,7 @@ if(screenClicked === "summary") {
 
                                 <div className="gameDetail mt-3">
                                     <div className="text-primary"> Genre(s):</div>
-                                    <div>{genres[0].name}<br/></div>
+                                    <div>{genre}<br/></div>
                                 </div>
 
                                 <div className="gameDetail mt-3">
@@ -303,7 +305,6 @@ export default class Game extends React.Component {
       const title = this.state.parameters.userId;
       const background = this.props.match.params.game+"Background";
       $('.backgroundColor').addClass(background);
-      console.log('propspar: ',this.props.match.params);
       // const titleStr = JSON.stringify(this.props.titleId);
       const titleStr = JSON.stringify(this.state.parameters.userId);
 
@@ -333,13 +334,6 @@ export default class Game extends React.Component {
 
   }
 
-    // changeUrl(){
-  //     if(this.state.path === "/"){
-  //         window.history.replaceState(null, "New Page Title", `/${this.props.titleId}`);
-  //     }else {
-  //         window.history.replaceState(null, "New Page Title", `${this.state.path}/${this.props.titleId}`);
-  //     }
-  // }
   averageRating(ratings){
       let finalRating = [];
       ratings.map(score => finalRating.push(score.rating));
@@ -348,8 +342,7 @@ export default class Game extends React.Component {
   }
 
   backButton(){
-      window.history.replaceState(null, "New Page Title", `${window.location.origin}${this.state.path}`);
-      window.location.reload();
+      history.back();
   }
 
   render()
@@ -358,10 +351,9 @@ export default class Game extends React.Component {
     const { game } = this.state;
       const title = this.props.titleId;
       const titleStr = this.state.parameters.userId;
-      console.log('titleStr: ',titleStr);
 
     return (
-        <div>
+        <>
             <div className="backgroundColor" />
             <Navbar system={this.state.parameters.game} />
             <div className="aContainer gameComp">
@@ -389,7 +381,7 @@ export default class Game extends React.Component {
                           <PostComment gameId={titleStr} title={titleStr} />
               </div>
             </div>
-        </div>
+        </>
     );
    }
 }
