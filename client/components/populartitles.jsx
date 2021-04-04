@@ -12,6 +12,8 @@ export default class PopularTitles extends React.Component {
         this.state = {
             games: null,
         };
+
+        this.windowSize = this.windowSize.bind(this);
     }
 
     componentDidMount() {
@@ -24,9 +26,48 @@ export default class PopularTitles extends React.Component {
             .then(res => res.json())
             .then(games => {
                 this.setState({ games });
-            })
+                this.windowSize();
+            });
     }
+    windowSize(){
+        if($(window).width() <= 576){
+            $('.screenStay').removeClass('w-25');
+        }
+        else if ($(window).width() < 768) {
+            // do something for small screens
+            $('.screenStay').addClass('w-25');
+        } else if ($(window).width() >= 768 && $(window).width() <= 992) {
+            // do something for medium screens
+            $('.screenRemove').addClass('hidden');
+            $('.screenStay').addClass('w-25');
+        } else if ($(window).width() > 992 && $(window).width() <= 1200) {
+            // do something for big screens
+        } else {
+            // do something for huge screens
+            $('.screenRemove').removeClass('hidden');
+            $('.screenStay').removeClass('w-25');
+        }
 
+        $(window).resize(function() {
+            if($(window).width() <= 576){
+                $('.screenStay').removeClass('w-25');
+            }
+            else if ($(window).width() < 768) {
+                // do something for small screens
+                $('.screenStay').addClass('w-25');
+            } else if ($(window).width() >= 768 && $(window).width() <= 992) {
+                // do something for medium screens
+                $('.screenRemove').addClass('hidden');
+                $('.screenStay').addClass('w-25');
+            } else if ($(window).width() > 992 && $(window).width() <= 1200) {
+                // do something for big screens
+            } else {
+                // do something for huge screens
+                $('.screenRemove').removeClass('hidden');
+                $('.screenStay').removeClass('w-25');
+            }
+        });
+    }
 
     render() {
         const { games } = this.state;
@@ -44,6 +85,7 @@ export default class PopularTitles extends React.Component {
             )
         }
     else if(games) {
+
             return (
                 <div className="popular">
                     <div className="aContainer">
@@ -51,12 +93,21 @@ export default class PopularTitles extends React.Component {
                             <h1 className="display-5 text-white">{this.props.title}</h1>
                             <hr className="text-white"/>
                         </div>
-                        <div className="row">
+                        <div className="container">
+                        <div className="row row-flex">
                             {
                                 games.length
-                                    ? games.map((event, i) => <GameItem key={i} event={event} system={this.props.system}/>)
+                                    ? games.map((event, i) => {
+                                        let cls = (i === 4 || i === 5) ? 'screenRemove col-sm-2 px-0 mb-3 toBeRemoved vh-50' : 'screenStay col-sm-2 px-0 mb-3 toBeRemoved vh-50';
+                                        return(
+                                            <div className={ cls } key={i} >
+                                                <GameItem key={i} event={event} system={this.props.system}/>
+                                            </div>
+                                        )
+                                    })
                                     : <li className="list-group-item">No games</li>
                             }
+                        </div>
                         </div>
                     </div>
                 </div>

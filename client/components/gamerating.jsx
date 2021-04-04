@@ -58,7 +58,6 @@ export default class GameRating extends React.Component{
         }
     }
     render(){
-        console.log('propsgId: ',this.props.gameId);
         if(this.state.up === true){
             return(
                 <>
