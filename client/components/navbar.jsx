@@ -84,7 +84,6 @@ class Navbar extends React.Component{
 
     handleKey(event){
         const { history } = this.props;
-        console.log('ev: ',event.charCode);
         if(event.charCode==13){
             history.push(`/search/${this.state.address}`);
         }

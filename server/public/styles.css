@@ -86,7 +86,7 @@ body {
 }
 .c-text{
   font-size:1.5vh;
-  height:13vh;
+  height:9.1vh;
   overflow:hidden;
 }
 .hidden{
@@ -108,6 +108,7 @@ body {
 }
 .searchImg{
   cursor:pointer;
+  height:15.2vh;
 }
 .searchItem{
   height:20vh;
@@ -117,6 +118,7 @@ body {
   margin-right:2px;
   margin-bottom:2px;
   width:10vw;
+  font-size:1vw;
 }
 .text-danger{
   -webkit-text-stroke-width: 1px;

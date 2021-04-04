@@ -68,7 +68,7 @@ function GameItem({ event,system }, props) {
     if(clicked===false && theRating !== null) {
 
         return (
-            <div className="col-sm-2 px-0 mb-3 toBeRemoved">
+            <div className="popTitle h-100">
                 <div className="card bg-dark text-white h-100">
                     <div className="imgContainer vTilt">
                         <Link to={`/game/${address}`} onClick={clickButton} aria-current="page">
@@ -94,7 +94,7 @@ function GameItem({ event,system }, props) {
     if(clicked===false && theRating === null) {
 
         return (
-            <div className="col-sm-2 px-0 mb-3 toBeRemoved">
+            <div className="popTitle h-100">
                 <div className="card bg-dark text-white h-100">
                     <div className="imgContainer vTilt">
                         <Link to={`/game/${address}`} onClick={clickButton} aria-current="page">
