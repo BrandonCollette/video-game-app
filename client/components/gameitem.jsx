@@ -72,16 +72,17 @@ function GameItem({ event,system }, props) {
                 <div className="card bg-dark text-white h-100">
                     <div className="imgContainer vTilt">
                         <Link to={`/game/${address}`} onClick={clickButton} aria-current="page">
-                            <img src={`https://images.igdb.com/igdb/image/upload/t_cover_big/${cover.image_id}.jpg`}
-                                 className="card-img-top img-fluid gameImg" alt="..."  />
+                            <div style = {{ backgroundImage: `url("https://images.igdb.com/igdb/image/upload/t_cover_big/${cover.image_id}.jpg")` }}
+                                 className="card-img-top img-fluid gameImg"
+                            />
                         </Link>
                         <h5><span className="badge bg-success ratingBadge">{Math.round(theRating)}</span></h5>
                     </div>
                     <div className="card-body d-flex flex-column">
-                        <h5 className="card-title">{name}</h5>
+                        <h5 className="card-title cardInfoTitle">{name}</h5>
                         {/*<p className="card-text mt-auto">Rating: {Math.round(rating)}</p>*/}
-                        <p className="card-text mt-auto">Platform: {platforms[0].name}</p>
-                        <Link className="btn btn-secondary textGlow mt-auto" to={`/game/${address}`} aria-current="page"
+                        <p className="card-text mt-auto cardInfo">Platform: {platforms[0].name}</p>
+                        <Link className="btn btn-secondary textGlow mt-auto detailsButton" to={`/game/${address}`} aria-current="page"
                                 onClick={clickButton}>Details
                         </Link>
                     </div>
@@ -98,16 +99,17 @@ function GameItem({ event,system }, props) {
                 <div className="card bg-dark text-white h-100">
                     <div className="imgContainer vTilt">
                         <Link to={`/game/${address}`} onClick={clickButton} aria-current="page">
-                            <img src={`https://images.igdb.com/igdb/image/upload/t_cover_big/${cover.image_id}.jpg`}
-                                 className="card-img-top img-fluid gameImg" alt="..." onClick={clickButton} />
+                            <div style = {{ backgroundImage: `url("https://images.igdb.com/igdb/image/upload/t_cover_big/${cover.image_id}.jpg")` }}
+                                 className="card-img-top img-fluid gameImg"
+                            />
                         </Link>
                         {/*<h5><span className="badge bg-success ratingBadge">{Math.round(theRating)}</span></h5>*/}
                     </div>
                     <div className="card-body d-flex flex-column">
-                        <h5 className="card-title">{name}</h5>
+                        <h5 className="card-title cardInfoTitle">{name}</h5>
                         {/*<p className="card-text mt-auto">Rating: {Math.round(rating)}</p>*/}
-                        <p className="card-text mt-auto">Platform: {platforms[0].name}</p>
-                        <Link className="btn btn-secondary textGlow mt-auto" to={`/game/${address}`}  aria-current="page"
+                        <p className="card-text mt-auto cardInfo">Platform: {platforms[0].name}</p>
+                        <Link className="btn btn-secondary textGlow mt-auto detailsButton" to={`/game/${address}`}  aria-current="page"
                                 onClick={clickButton}>Details
                         </Link>
                     </div>
