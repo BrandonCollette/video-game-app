@@ -80,6 +80,8 @@ body {
 .gameImg{
   height:25vh;
   cursor:pointer;
+  background-size:cover;
+  background-position: center;
 }
 .c-title{
   font-size:2.5vh;
@@ -237,8 +239,17 @@ body {
 .gameNavBar{
   display: unset
 }
+.cardInfoTitle{
+  font-size:1.2vw;
+}
+.cardInfo{
+  font-size:1vw;
+}
+.detailsButton{
+  font-size:1vw;
+}
 
-@media only screen and (max-width: 980px){
+@media only screen and (max-width: 576px){
 
   .aContainer {
     margin-left:5vh;
@@ -277,6 +288,17 @@ body {
   .searchButton{
     margin-bottom:2vh;
     margin-right:4vw;
+  }
+  .cardInfoTitle{
+    font-size:5vw;
+    text-align:center;
+  }
+  .cardInfo{
+    font-size:4vw;
+    text-align:center;
+  }
+  .detailsButton{
+    font-size:5vw;
   }
 
 }
