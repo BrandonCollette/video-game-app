@@ -259,11 +259,27 @@ body {
   font-size:1.1vw;
 }
 
+@media only screen and (max-width: 1442px){
+  .bigInput{
+    width: 60vh;
+    margin-left:3vh;
+  }
+}
+@media only screen and (max-width: 1309px){
+  .bigInput{
+    width: 50vh;
+    margin-left:0vh;
+  }
+}
+
 @media only screen and (max-width: 1200px){
   .summaryText{
     font-size:1.5vw;
     width:52vw;
     text-align:center;
+  }
+  .bigInput{
+    width: 35vh;
   }
 }
 
@@ -277,6 +293,22 @@ body {
 @media only screen and (max-width: 991px){
   .navbar-collapse{
     text-align:center;
+  }
+  .rateButton{
+    width:10vw;
+    font-size:1.8vw;
+  }
+  .detailsButton{
+    font-size:1.6vw;
+  }
+  .cardInfoTitle{
+    font-size:2vw;
+  }
+  .cardInfo{
+    font-size:1.5vw;
+  }
+  .searchScore{
+    font-size:1.5vw;
   }
   .defaultMobile{
     background: rgb(50, 210, 201);
@@ -312,6 +344,19 @@ body {
   }
 }
 
+@media only screen and (max-width: 784px){
+  .detailsButton{
+    font-size:2vw;
+  }
+  .cardInfoTitle{
+    font-size:3vw;
+  }
+  .cardInfo{
+    font-size:2vw;
+  }
+}
+
+
 @media only screen and (min-width: 576px) and (max-width: 595px){
   .popTitle{
     width:100%;
@@ -320,6 +365,15 @@ body {
   .popCell{
     width:25%;
   }
+  .detailsButton{
+    font-size:2.5vw;
+  }
+  .cardInfoTitle{
+    font-size:3.5vw;
+  }
+  .cardInfo{
+    font-size:2.5vw;
+  }
 
 }
 
@@ -327,11 +381,15 @@ body {
 @media only screen and (max-width: 575px){
 
   .aContainer {
-    margin-left:5vh;
-    margin-right:5vh;
+    margin-left:2vh;
+    margin-right:2vh;
   }
   .navTitle{
     font-size:4vw;
+  }
+  .searchScore{
+    font-size:2.5vw;
+    width:20vw;
   }
   .defaultMobile{
     background: rgb(50, 210, 201);
@@ -354,6 +412,10 @@ body {
   }
   .ratingBadge{
     margin-left:18vw;
+  }
+  .rateButton{
+    font-size:3vw;
+    width:20vw;
   }
   .navbar-collapse{
     text-align:center;
@@ -396,5 +458,10 @@ body {
   }
   .summaryText{
     font-size:3vw;
+    margin-left:13vw;
+    margin-bottom:2vh;
+  }
+  .sumPlat{
+    text-align:center;
   }
 }

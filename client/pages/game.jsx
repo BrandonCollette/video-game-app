@@ -132,20 +132,22 @@ if(screenClicked === "summary") {
                             <img src={`https://images.igdb.com/igdb/image/upload/t_cover_big/${cover.image_id}.jpg`}
                                  className="rounded float-start img-fluid w-100 mt-4" alt="..."/>
                         </div>
-                        <div className="col-sm">
+                        <div className="col-sm ">
                             <div className="mt-3">USER RATING:</div>
                             <h1><span className="badge bg-success m-1 theRating">{Math.round(endRating)}</span></h1>
-                            <div className="text-primary">
-                                Summary:
-                            </div>
-                            <div className="summaryText">
-                                {summary}
-                            </div>
-                            <div className="text-primary">
-                                Platform:
-                            </div>
-                            <div>
-                                {platforms[0].name}
+                            <div className="sumPlat">
+                                <div className="text-primary">
+                                    Summary:
+                                </div>
+                                <div className="summaryText">
+                                    {summary}
+                                </div>
+                                <div className="text-primary">
+                                    Platform:
+                                </div>
+                                <div>
+                                    {platforms[0].name}
+                                </div>
                             </div>
                         </div>
                         <div className="col-sm text-center">
