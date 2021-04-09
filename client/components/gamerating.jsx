@@ -93,7 +93,7 @@ export default class GameRating extends React.Component{
                         <i className="fas fa-arrow-alt-circle-right symGlow ms-1" style={{fontsize: "2vh"}}
                            onClick={this.rateUp}/>
                     </div>
-                    <button className="btn btn-primary w-25 mt-1 gone" type="submit" value='submit'
+                    <button className="btn btn-primary mt-1 gone rateButton" type="submit" value='submit'
                             onClick={this.handleSubmit}>Rate
                     </button>
                 </>

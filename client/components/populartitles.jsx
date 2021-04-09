@@ -31,40 +31,69 @@ export default class PopularTitles extends React.Component {
     }
     windowSize(){
         if($(window).width() <= 576){
+            $('.screen1Remove').addClass('hidden');
+            $('.screenStay').addClass('w-100');
             $('.screenStay').removeClass('w-25');
         }
         else if ($(window).width() < 768) {
             // do something for small screens
+            $('.screen23Remove').addClass('hidden');
+            $('.lastTwo').addClass('w-50');
+
+            $('.screen1Remove').removeClass('hidden');
+            $('.screenStay').removeClass('w-100');
             $('.screenStay').addClass('w-25');
-        } else if ($(window).width() >= 768 && $(window).width() <= 992) {
+        }
+        else if ($(window).width() >= 768 && $(window).width() <= 992) {
             // do something for medium screens
             $('.screenRemove').addClass('hidden');
-            $('.screenStay').addClass('w-25');
-        } else if ($(window).width() > 992 && $(window).width() <= 1200) {
+            $('.lastFour').addClass('w-25');
+
+            $('.screen23Remove').removeClass('hidden');
+            $('.lastTwo').removeClass('w-50')
+        }
+        else if ($(window).width() > 992 && $(window).width() <= 1200) {
             // do something for big screens
-        } else {
+        }
+        else {
             // do something for huge screens
             $('.screenRemove').removeClass('hidden');
             $('.screenStay').removeClass('w-25');
+            $('.lastFour').removeClass('w-25');
         }
 
         $(window).resize(function() {
             if($(window).width() <= 576){
+                $('.screen1Remove').addClass('hidden');
+                $('.screenStay').addClass('w-100');
                 $('.screenStay').removeClass('w-25');
             }
             else if ($(window).width() < 768) {
                 // do something for small screens
+                $('.screen23Remove').addClass('hidden');
+                $('.lastTwo').addClass('w-50');
+
+                $('.screen1Remove').removeClass('hidden');
+                $('.screenStay').removeClass('w-100');
                 $('.screenStay').addClass('w-25');
-            } else if ($(window).width() >= 768 && $(window).width() <= 992) {
+            }
+            else if ($(window).width() >= 768 && $(window).width() <= 992) {
                 // do something for medium screens
                 $('.screenRemove').addClass('hidden');
-                $('.screenStay').addClass('w-25');
-            } else if ($(window).width() > 992 && $(window).width() <= 1200) {
+                $('.lastFour').addClass('w-25');
+
+                $('.screen23Remove').removeClass('hidden');
+                $('.lastTwo').removeClass('w-50')
+            }
+            else if ($(window).width() > 992 && $(window).width() <= 1200) {
                 // do something for big screens
-            } else {
+            }
+            else {
                 // do something for huge screens
                 $('.screenRemove').removeClass('hidden');
                 $('.screenStay').removeClass('w-25');
+                $('.lastFour').removeClass('w-25');
+
             }
         });
     }
@@ -94,11 +123,24 @@ export default class PopularTitles extends React.Component {
                             <hr className="text-white"/>
                         </div>
                         <div className="container">
-                        <div className="row row-flex">
+                        <div className="row row-flex ">
                             {
                                 games.length
                                     ? games.map((event, i) => {
-                                        let cls = (i === 4 || i === 5) ? 'screenRemove col-sm-2 px-0 mb-3 toBeRemoved vh-50' : 'screenStay col-sm-2 px-0 mb-3 toBeRemoved vh-50';
+                                        let cls = "";
+                                        // let cls = (i === 4 || i === 5) ? 'screenRemove col-sm-2 px-0 mb-3 toBeRemoved vh-50 popCell' : 'screenStay col-sm-2 px-0 mb-3 toBeRemoved vh-50 popCell';
+                                        if(i===1){
+                                            cls='screen1Remove col-sm-2 px-0 mb-3 toBeRemoved vh-50 popCell lastTwo lastFour';
+                                        }
+                                        else if(i===2 || i===3){
+                                            cls= 'screen23Remove col-sm-2 px-0 mb-3 toBeRemoved vh-50 popCell lastFour';
+                                        }
+                                        else if(i===4 || i===5){
+                                            cls='screenRemove col-sm-2 px-0 mb-3 toBeRemoved vh-50 popCell ';
+                                        }
+                                        else{
+                                            cls='screenStay col-sm-2 px-0 mb-3 toBeRemoved vh-50 popCell lastTwo lastFour'
+                                        }
                                         return(
                                             <div className={ cls } key={i} >
                                                 <GameItem key={i} event={event} system={this.props.system}/>
