@@ -39,7 +39,6 @@ class Navbar extends React.Component{
             this.setState({mobile:"defaultMobile"})
         }
         else{
-            console.log('propsys: ',this.props.system);
             const newSystem= this.props.system+"Mobile";
             this.setState({system: this.props.system,mobile:newSystem});
         }
