@@ -22,6 +22,7 @@ body {
   background: linear-gradient(162deg, rgba(50, 210, 201, 1) 0%, rgba(35, 22, 221, 1) 90%, rgba(142, 87, 141, 1) 100%);
   box-shadow: 0 5px 30px 5px;
 }
+
 .navTitle{
   font-size:0.9vw;
 }
@@ -145,18 +146,20 @@ body {
   height:100%;
 }
 .comInput{
-  margin-top:1vh;
+  margin-top:3vh;
   height:10vh;
   width:100%;
+  margin-bottom:1vh;
 }
 .nameInput{
+  margin-top:1vh;
   width:50%;
 }
 .subButton{
   height:6vh;
   position:relative;
   right:0;
-  top:5vh;
+  top:7vh;
 }
 .gameDetailsContainer{
 
@@ -248,8 +251,80 @@ body {
 .detailsButton{
   font-size:1vw;
 }
+.rateButton{
+  font-size:1vw;
+  width:8vw;
+}
+.summaryText{
+  font-size:1.1vw;
+}
 
-@media only screen and (max-width: 576px){
+@media only screen and (max-width: 1200px){
+  .summaryText{
+    font-size:1.5vw;
+    width:52vw;
+    text-align:center;
+  }
+}
+
+
+@media only screen and (max-width: 992px){
+  .summaryText{
+    font-size:1.7vw;
+  }
+}
+
+@media only screen and (max-width: 991px){
+  .navbar-collapse{
+    text-align:center;
+  }
+  .defaultMobile{
+    background: rgb(50, 210, 201);
+    background: linear-gradient(162deg, rgba(50, 210, 201, 1) 0%, rgba(35, 22, 221, 1) 90%, rgba(142, 87, 141, 1) 100%);
+  }
+  .navTitle{
+    font-size:2vw;
+  }
+  .bigInput{
+    margin:auto;
+    width:70%;
+    margin-bottom:2vh;
+  }
+  .searchButton{
+    margin-bottom:2vh;
+    margin-right:4vw;
+  }
+  .xboxMobile{
+    background: rgb(23,213,0);
+    background: linear-gradient(162deg, rgba(23,213,0,1) 0%, rgba(38,148,0,1) 53%, rgba(1,116,0,1) 100%);
+  }
+  .playstationMobile{
+    background: rgb(23,42,255);
+    background: linear-gradient(162deg, rgba(23,42,255,1) 0%, rgba(0,15,148,1) 53%, rgba(0,4,110,1) 100%);
+  }
+  .switchMobile{
+    background: rgb(255,25,25);
+    background: linear-gradient(162deg, rgba(255,25,25,1) 0%, rgba(163,0,0,1) 53%, rgba(126,0,0,1) 100%);
+  }
+  .pcMobile{
+    background: rgb(103,103,103);
+    background: linear-gradient(162deg, rgba(103,103,103,1) 0%, rgba(50,50,50,1) 75%, rgba(10,10,13,1) 100%);
+  }
+}
+
+@media only screen and (min-width: 576px) and (max-width: 595px){
+  .popTitle{
+    width:100%;
+    margin:auto;
+  }
+  .popCell{
+    width:25%;
+  }
+
+}
+
+
+@media only screen and (max-width: 575px){
 
   .aContainer {
     margin-left:5vh;
@@ -257,6 +332,10 @@ body {
   }
   .navTitle{
     font-size:4vw;
+  }
+  .defaultMobile{
+    background: rgb(50, 210, 201);
+    background: linear-gradient(162deg, rgba(50, 210, 201, 1) 0%, rgba(35, 22, 221, 1) 90%, rgba(142, 87, 141, 1) 100%);
   }
   .carousel-item{
     height:23vh;
@@ -277,7 +356,6 @@ body {
     margin-left:18vw;
   }
   .navbar-collapse{
-    background:linear-gradient(162deg, rgba(50, 210, 201, 1) 0%, rgba(35, 22, 221, 1) 90%, rgba(142, 87, 141, 1) 100%);
     text-align:center;
   }
   .bigInput{
@@ -300,5 +378,23 @@ body {
   .detailsButton{
     font-size:5vw;
   }
-
+  .xboxMobile{
+    background: rgb(23,213,0);
+    background: linear-gradient(162deg, rgba(23,213,0,1) 0%, rgba(38,148,0,1) 53%, rgba(1,116,0,1) 100%);
+  }
+  .playstationMobile{
+    background: rgb(23,42,255);
+    background: linear-gradient(162deg, rgba(23,42,255,1) 0%, rgba(0,15,148,1) 53%, rgba(0,4,110,1) 100%);
+  }
+  .switchMobile{
+    background: rgb(255,25,25);
+    background: linear-gradient(162deg, rgba(255,25,25,1) 0%, rgba(163,0,0,1) 53%, rgba(126,0,0,1) 100%);
+  }
+  .pcMobile{
+    background: rgb(103,103,103);
+    background: linear-gradient(162deg, rgba(103,103,103,1) 0%, rgba(50,50,50,1) 75%, rgba(10,10,13,1) 100%);
+  }
+  .summaryText{
+    font-size:3vw;
+  }
 }

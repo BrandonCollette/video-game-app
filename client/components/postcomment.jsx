@@ -157,7 +157,7 @@ export default class PostComment extends React.Component{
                         <div className="card bg-dark mx-2 comments">
                             <div className="card-heaader text-white my-3">
                             </div>
-                            <form className="d-flex" onSubmit={this.handleSubmit}>
+                            <form className="d-flex commentForm" onSubmit={this.handleSubmit}>
                                 <input className="form-control me-2 col-sm-* input-lg nameInput position-absolute top-0 start-0"
                                        placeholder="Name" aria-label="Search" type='text'
                                        value={this.state.name}
@@ -169,19 +169,6 @@ export default class PostComment extends React.Component{
                                 {/*<Link className="btn btn-outline-success" type="submit" value='submit' to="/search" results={searchResults} search={this.state.value} >Search</Link>*/}
                                 <button className="btn btn-primary w-25 subButton" type="submit" value='submit'>Submit</button>
 
-                                {/*<div className="col-sm-2 mx-0 my-auto">*/}
-                                {/*    <div className="card bg-dark">*/}
-                                {/*        <div className="card-body text-center">*/}
-                                {/*            /!*<h1><span className="badge bg-secondary">0</span></h1>*!/*/}
-                                {/*            <h1>*/}
-                                {/*                <input className="rateInput form-control"*/}
-                                {/*                       placeholder="rate" type='text' aria-label="Search"*/}
-                                {/*                       value={this.state.rating}*/}
-                                {/*                       onChange={this.handleRatingChange} />*/}
-                                {/*            </h1>*/}
-                                {/*        </div>*/}
-                                {/*    </div>*/}
-                                {/*</div>*/}
 
                             </form>
                         </div>

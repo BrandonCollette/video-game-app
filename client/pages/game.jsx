@@ -138,7 +138,7 @@ if(screenClicked === "summary") {
                             <div className="text-primary">
                                 Summary:
                             </div>
-                            <div>
+                            <div className="summaryText">
                                 {summary}
                             </div>
                             <div className="text-primary">
@@ -351,11 +351,18 @@ export default class Game extends React.Component {
     const { game } = this.state;
       const title = this.props.titleId;
       const titleStr = this.state.parameters.userId;
+      let paramGame = "";
+      if(this.state.parameters.game === "system"){
+          paramGame="defaultMobile";
+      }
+      else {
+          paramGame = this.state.parameters.game;
+      }
 
     return (
         <>
             <div className="backgroundColor" />
-            <Navbar system={this.state.parameters.game} />
+            <Navbar system={paramGame} />
             <div className="aContainer gameComp">
               <div className="mx-0 hideCard">
                           <ul className="list-group list-group-flush mx-0">

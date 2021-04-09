@@ -9,7 +9,7 @@ class Navbar extends React.Component{
         super(props);
 
 
-        this.state = ({value:''}, {searchResults:null}, {search:''}, {parameters:this.props.match.params},{address:null},{system:this.props.system});
+        this.state = ({value:''}, {searchResults:null}, {search:''}, {parameters:this.props.match.params},{address:null},{system:null},{mobile:null});
 
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -32,6 +32,17 @@ class Navbar extends React.Component{
         }
     }
     componentDidMount(){
+        if(this.props.system === undefined) {
+            this.setState({system: "defaultMobile",mobile:"defaultMobile"});
+        }
+        else if(this.props.system === "defaultMobile"){
+            this.setState({mobile:"defaultMobile"})
+        }
+        else{
+            console.log('propsys: ',this.props.system);
+            const newSystem= this.props.system+"Mobile";
+            this.setState({system: this.props.system,mobile:newSystem});
+        }
         if(this.props.match.params.system) {
             const background = this.props.match.params.system+"Background";
             $('.colorBackground').addClass(background);
@@ -106,7 +117,7 @@ class Navbar extends React.Component{
                             <span className="navbar-toggler-icon"/>
                         </button>
 
-                        <div className="collapse navbar-collapse" id="navbarSupportedContent">
+                        <div className={`collapse navbar-collapse collapseBackground ${this.state.mobile}`} id="navbarSupportedContent">
                             <ul className="navbar-nav  mb-2 mb-lg-0">
                                 <li className="nav-item mx-5">
                                     <Link className="nav-link active text-white navTitle" aria-current="page" to="/xbox">Xbox
@@ -163,7 +174,7 @@ class Navbar extends React.Component{
                                 <span className="navbar-toggler-icon"/>
                             </button>
 
-                            <div className="collapse navbar-collapse" id="navbarSupportedContent">
+                            <div className={`collapse navbar-collapse collapseBackground ${this.state.mobile}`} id="navbarSupportedContent">
                                 <ul className="navbar-nav  mb-2 mb-lg-0">
                                     <li className="nav-item mx-5">
                                         <Link className="nav-link active text-white navTitle" aria-current="page" to="/xbox">Xbox
@@ -221,7 +232,7 @@ class Navbar extends React.Component{
                             <span className="navbar-toggler-icon"/>
                         </button>
 
-                        <div className="collapse navbar-collapse" id="navbarSupportedContent">
+                        <div className={`collapse navbar-collapse collapseBackground ${this.state.mobile}`} id="navbarSupportedContent">
                             <ul className="navbar-nav  mb-2 mb-lg-0">
                                 <li className="nav-item mx-5">
                                     <Link className="nav-link active text-white navTitle" aria-current="page" to="/xbox">Xbox
