@@ -1,6 +1,5 @@
 import React from 'react';
 import GameItem from '../components/gameitem';
-// import VanillaTilt from "vanilla-tilt";
 
 
 

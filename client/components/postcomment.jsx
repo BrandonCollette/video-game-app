@@ -1,13 +1,10 @@
 import React from 'react';
-// import Rating from '../components/rating';
 
 
 function CommentItem({ event, ratings, title }) {
     const { name, commentBody, commentId, gameId } = event;
-    // console.log('itEvent: ',event);
-    //delete comment
+
      function handleDelete(){
-         // const titleStr = title;
         const deleteId = commentId;
         fetch('/api/comments/'+deleteId,{
             method:'DELETE'
@@ -28,12 +25,7 @@ function CommentItem({ event, ratings, title }) {
                         </div>
                     </div>
                 </div>
-                {/*<div className="col-sm-2 mx-0 my-auto">*/}
-                {/*    <div className="card bg-dark">*/}
-                {/*        <Rating ratingId={commentId} gameId={gameId} ratings={ratings} />*/}
-                {/*    </div>*/}
                     <i className="fas fa-times text-white position-absolute top-0 end-0 m-1" onClick={handleDelete} />
-                {/*</div>*/}
             </div>
         </div>
     );
@@ -82,11 +74,6 @@ export default class PostComment extends React.Component{
                 method:'GET',
                 headers: { "Content-Type": "application/json" },
             }).then(res => res.json()),
-
-            // fetch('api/rating/'+titleStr,{
-            //     method:'GET',
-            //     headers: { "Content-Type": "application/json" },
-            // }).then(res => res.json()),
         ]).then(allResponses => {
             const response1 = allResponses[0];
             // const response2 = allResponses[1];
@@ -120,15 +107,8 @@ export default class PostComment extends React.Component{
                     headers: { "Content-Type": "application/json" },
                     body: '{"content":[' + `"${comment}"` + ',' + `"${name}"` + ',' + `"${gameId}"` + ']}',
                 }).then(res => res.json()),
-
-                // fetch('api/rating',{
-                //     method:'POST',
-                //     headers: { "Content-Type": "application/json" },
-                //     body: '{"content": ['+`"${rating}"`+','+`"${gameId}"`+','+`"${commentId}"`+']}',
-                // }).then(res => res.json()),
             ]).then(allResponses => {
                 const response1 = allResponses[0];
-                // const response2 = allResponses[1];
                 this.reloadComments();
                 this.setState({newComment: this.state.newComment += 1});
 
@@ -142,7 +122,6 @@ export default class PostComment extends React.Component{
 
     render(){
         const { comments } = this.state;
-        // this.reloadComments();
         if (!comments) {
             return (
                 <></>
@@ -166,7 +145,6 @@ export default class PostComment extends React.Component{
                                        placeholder="Leave a Comment" aria-label="Search" type='text'
                                        value={this.state.commentBody}
                                        onChange={this.handleCommentChange}/>
-                                {/*<Link className="btn btn-outline-success" type="submit" value='submit' to="/search" results={searchResults} search={this.state.value} >Search</Link>*/}
                                 <button className="btn btn-primary w-25 subButton" type="submit" value='submit'>Submit</button>
 
 
