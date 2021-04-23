@@ -1,16 +1,13 @@
 import React, { useState,useEffect } from 'react';
 import {Link, withRouter} from "react-router-dom";
 import VanillaTilt from "vanilla-tilt";
-import Game from "../pages/game";
 
 
 
 function GameItem({ event,system }, props) {
     const {name, rating, cover, platforms, id} = event;
     let gameId = null;
-    // this.state = {clicked: false},{titleId:null};
-    //
-    //  this.clicked = this.clicked.bind(this);
+
     const [clicked, setClicked] = useState(false);
     const [titleId, setTitleId] = useState(null);
     const [ratings, setRatings] = useState(null);
@@ -50,11 +47,7 @@ function GameItem({ event,system }, props) {
 
     function clickButton() {
         gameId = id;
-        // props.history.push(`/${system}/${id}`);
-        // this.setState({clicked: true});
-        // this.setState({titleId: id});
         setTitleId(gameId);
-        // setClicked(true);
     }
 
     let address = null;
@@ -103,7 +96,6 @@ function GameItem({ event,system }, props) {
                                  className="card-img-top img-fluid gameImg"
                             />
                         </Link>
-                        {/*<h5><span className="badge bg-success ratingBadge">{Math.round(theRating)}</span></h5>*/}
                     </div>
                     <div className="card-body d-flex flex-column">
                         <h5 className="card-title cardInfoTitle">{name}</h5>
@@ -119,13 +111,5 @@ function GameItem({ event,system }, props) {
 
         );
     }
-    // else{
-    //     $(".toBeRemoved").addClass("hidden");
-    //     return(
-    //         <Game titleId={titleId} system={system} />
-    //     );
-    // }
-
-
 }
 export default withRouter(GameItem);

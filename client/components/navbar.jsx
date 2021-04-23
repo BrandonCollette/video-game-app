@@ -2,7 +2,6 @@ import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import Search from '../pages/search';
 import PopularTitles from '../components/populartitles';
-// import Game from '../pages/game';
 
 class Navbar extends React.Component{
     constructor(props) {
@@ -58,38 +57,13 @@ class Navbar extends React.Component{
                 .then(results => {
                     this.setState({searchResults:results});
                     $('.gameComp').addClass('hidden');
-                    // this.setState({value:''});
                 });
             this.setState({searchResults:null});
-            // $('.navComp').addClass('hidden');
         }
     }
 
     handleSubmit(event){
         event.preventDefault();
-        // this.props.history.push(`/search/${this.state.value}`);
-        // this.setState({search:this.state.value});
-        // const search = this.state.value;
-        // // this.props.onSubmit(this.state.value);
-        //     fetch('/api/search', {
-        //         method:'POST',
-        //         headers: { "Content-Type": "application/json" },
-        //         body:'{"content":'+`"${search}"`+'}',
-        //     })
-        //         .then(res => res.json())
-        //         .then(results => {
-        //             this.setState({searchResults:results});
-        //             $('.gameComp').addClass('hidden');
-        //             // this.setState({value:''});
-        //         });
-        // this.setState({searchResults:null});
-
-
-        // const { history } = this.props;
-        // console.log('ev: ',event.charCode);
-        // if(event.charCode==13){
-        //     history.push(`/search?q=${this.state.address}`);
-        // }
     }
 
     handleKey(event){
@@ -146,7 +120,6 @@ class Navbar extends React.Component{
                                        onKeyPress={event => this.handleKey(event)}
                                        value={this.state.value}
                                        onChange={this.handleChange}/>
-                                {/*<Link className="btn btn-outline-success" type="submit" value='submit' to="/search" results={searchResults} search={this.state.value} >Search</Link>*/}
 
                                     <Link className="btn btn-outline-success searchButton" type="submit" value='submit' results={searchResults} search={this.state.value}
                                             to={`/search/${this.state.address}`}>Search
@@ -273,60 +246,7 @@ class Navbar extends React.Component{
             </div>
         );
         }
-    // else if(this.props.match.params.system){
-    //     console.log('wow that is woww!');
-    //     return(
-    //         <nav
-    //             className={`navbar navbar-expand-lg navbar-light bg-dark mb-5 sticky-top defNavbar ${this.props.system}`}>
-    //             <div className="container-fluid sticky-top">
-    //                 <Link className="navbar-brand text-danger textGlow" to="/">GAMESCORE</Link>
-    //                 <button className="navbar-toggler" type="button" data-bs-toggle="collapse"
-    //                         data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-    //                         aria-expanded="false" aria-label="Toggle navigation">
-    //                     <span className="navbar-toggler-icon"/>
-    //                 </button>
-    //
-    //                 <div className="collapse navbar-collapse" id="navbarSupportedContent">
-    //                     <ul className="navbar-nav  mb-2 mb-lg-0">
-    //                         <li className="nav-item mx-5">
-    //                             <Link className="nav-link active text-white navTitle" aria-current="page" to="/xbox">Xbox
-    //                                 One</Link>
-    //                         </li>
-    //
-    //                         <li className="nav-item mx-5">
-    //                             <Link className="nav-link active text-white navTitle" aria-current="page"
-    //                                   to="/playstation">Playstation
-    //                                 4</Link>
-    //                         </li>
-    //
-    //                         <li className="nav-item mx-5">
-    //                             <Link className="nav-link active text-white navTitle" aria-current="page" to="/switch">Nintendo
-    //                                 Switch</Link>
-    //                         </li>
-    //
-    //                         <li className="nav-item mx-5">
-    //                             <Link className="nav-link active text-white navTitle" aria-current="page"
-    //                                   to="/pc">PC</Link>
-    //                         </li>
-    //
-    //                     </ul>
-    //                     <form className="d-flex" onSubmit={this.handleSubmit}>
-    //                         <input className="form-control me-2 col-sm-* input-lg bigInput"
-    //                                placeholder="Search" aria-label="Search" type='text'
-    //                                value={this.state.value}
-    //                                onChange={this.handleChange}/>
-    //                         {/*<Link className="btn btn-outline-success" type="submit" value='submit' to="/search" results={searchResults} search={this.state.value} >Search</Link>*/}
-    //
-    //                         <button className="btn btn-outline-success searchButton" type="submit" value='submit' results={searchResults} search={this.state.value}
-    //                               to={`/search/${this.state.address}`}>Search
-    //                         </button>
-    //
-    //                     </form>
-    //                 </div>
-    //             </div>
-    //         </nav>
-    //     )
-    //     }
+
     }
 }
 export default withRouter(Navbar);

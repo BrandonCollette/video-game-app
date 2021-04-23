@@ -16,11 +16,6 @@ export default class App extends React.Component {
   render() {
     return (
         <div>
-          {/* <div className="text-center"> */}
-          {/*  <Link className="px-4" to="/">Home</Link> */}
-          {/*  <Link className="px-4" to="/search">Search</Link> */}
-          {/* </div> */}
-
 
             <Route exact path="/">
             <Home />
@@ -41,13 +36,9 @@ export default class App extends React.Component {
                 <Pc />
             </Route>
 
-
             <Route path="/game/:game/:userId" render={(props) => <Game {...props} />} />
 
             <Route path="/search/:system/:search" render={(props) => <Navbar {...props} />} />
-
-
-
 
         </div>
     );

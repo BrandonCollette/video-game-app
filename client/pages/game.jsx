@@ -90,9 +90,6 @@ function GameCard({ event, averageRating }) {
     function trailerButton(){
         setPage("trailer");
     }
-    // function backButton(){
-    //     setPage("null");
-    // }
 
 
 if(screenClicked === "summary") {
@@ -106,7 +103,6 @@ if(screenClicked === "summary") {
             </div>
 
             <div className="card bg-dark text-white mb-2 mt-1 mx-0 gCard" style={{padding: "2vh"}}>
-                {/*<i className="fas fa-arrow-left"  onClick={backButton} />*/}
                 <h1 className="display-5 text-white text-center">{name}</h1>
                 <hr className="text-white"/>
 
@@ -214,10 +210,7 @@ if(screenClicked==="screenshots"){
 
         <div id="gameCaro" className="carousel slide mt-4" data-bs-ride="carousel">
             <div className="carousel-inner">
-                {/*<div className="carousel-item active">*/}
-                {/*    <img src={`https://images.igdb.com/igdb/image/upload/t_1080p/${screenshots[0].image_id}.jpg`}*/}
-                {/*         className="d-block w-100" alt="image 1"/>*/}
-                {/*</div>*/}
+
                 <Carousel screenshots={screenshots} />
 
             </div>
@@ -300,7 +293,6 @@ export default class Game extends React.Component {
 
     this.averageRating = this.averageRating.bind(this);
     this.backButton = this.backButton.bind(this);
-    // this.changeUrl = this.changeUrl.bind(this);
   }
 
   componentDidMount() {
@@ -309,8 +301,6 @@ export default class Game extends React.Component {
       $('.backgroundColor').addClass(background);
       // const titleStr = JSON.stringify(this.props.titleId);
       const titleStr = JSON.stringify(this.state.parameters.userId);
-
-      // this.props.history.push(`/${titleStr}`);
 
       const platform = '"fields name,rating,cover.image_id,platforms.name,summary,involved_companies.company.name,genres.name,age_ratings.rating,screenshots.image_id,videos.video_id; limit 1; where rating > 0 & id = '+title+';"';
 

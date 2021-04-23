@@ -2,39 +2,6 @@ import React from 'react';
 import Navbar from '../components/navbar';
 import SearchItem from '../components/searchitem';
 
-
-//  function SearchItem({ event }) {
-//     const { name, cover,summary } = event;
-//     console.log('event: ',event);
-//     if(!cover){
-//         return(
-//             <div className="card w-100 bg-dark text-white my-1 px-0">
-//                 <div className="card-body">
-//                     <img src="" className="rounded float-start img-fluid mt-1 ms-0 me-2 searchImg" alt="..." />
-//                     <h5 className="card-title c-title">{name}</h5>
-//                     <p className="card-text c-text">{summary}</p>
-//                     <a href="" className="btn btn-primary">Score</a>
-//                 </div>
-//             </div>
-//         )
-//     }
-//     else {
-//         return (
-//
-//             <div className="card w-100 bg-dark text-white my-1 px-0">
-//                 <div className="card-body">
-//                     <img src={cover.url} className="rounded float-start img-fluid mt-1 ms-0 me-2 searchImg" alt="..."/>
-//                     <h5 className="card-title c-title">{name}</h5>
-//                     <p className="card-text c-text">{summary}</p>
-//                     <a href="" className="btn btn-primary">Score</a>
-//                 </div>
-//             </div>
-//
-//         );
-//     }
-// }
-
-
 export default class Search extends React.Component {
     constructor(props) {
         super(props);
@@ -44,17 +11,7 @@ export default class Search extends React.Component {
         };
     }
 
-    // onSearchSubmit() {
-    //     console.log('it worked: ',this.props.value);
-    //     fetch('/api/search',{body: this.props.value})
-    //         .then(res => res.json())
-    //         .then(results => {
-    //             console.log('sbodyvalue: ',this.props.value);
-    //             this.setState({ results });
-    //         })
-    // };
     componentDidMount(){
-        // this.props.history.push(`/search/${this.state.results}`);
     }
 
     render() {
@@ -62,7 +19,6 @@ export default class Search extends React.Component {
         if (!results) {
             return (
                 <div className="bruhSpin">
-                    {/*<Navbar system={this.props.system} />*/}
                     <p className="text-center">
                         <div className="spinner-border text-light" role="status">
                             <span className="visually-hidden">Loading...</span>
@@ -75,7 +31,6 @@ export default class Search extends React.Component {
             $('.bruhSpin').addClass('hidden');
             return (
                 <div>
-                    {/*<Navbar system={this.props.system} />*/}
                     <div className="aContainer">
                         <div className="my-5 toBeRemoved">
                             <h5 className="text-white">TOP RESULTS FOR {this.props.search.toUpperCase()}</h5>

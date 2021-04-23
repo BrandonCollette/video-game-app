@@ -7,17 +7,7 @@ export default class rating extends React.Component{
         this.state = {ratingId:this.props.ratingId, gameId:this.props.gameId, ratings:null};
     }
     componentDidMount() {
-        // fetch('api/rating/'+this.state.ratingId+'/'+this.state.gameId, {
-        //         method:'GET',
-        //         headers: { "Content-Type": "application/json" },
-        //     })
-        //         .then(res => res.json())
-        //         .then(ratings => {
-        //             this.setState({ ratings });
-        //             console.log('ratRatings: ',this.state.ratings);
-        //         });
         this.setState({ratings:this.props.ratings});
-        // console.log('raId: ',this.state.ratings);
     }
 
     render(){
