@@ -123,7 +123,7 @@ body {
   width:10vw;
   font-size:1vw;
 }
-.text-danger{
+.mainLogo{
   -webkit-text-stroke-width: 1px;
   -webkit-text-stroke-color: white;
   font-weight:bolder;
@@ -258,6 +258,13 @@ body {
 .summaryText{
   font-size:1.1vw;
 }
+.missing-fields{
+  display:inline-block;
+  white-space:nowrap;
+  position:absolute;
+  left:32vw;
+  bottom:11vh;
+}
 
 @media only screen and (max-width: 1442px){
   .bigInput{
@@ -352,6 +359,10 @@ body {
     font-size:3vw;
   }
   .cardInfo{
+    font-size:2vw;
+  }
+  .missing-fields{
+    bottom:11vh;
     font-size:2vw;
   }
 }
@@ -463,5 +474,10 @@ body {
   }
   .sumPlat{
     text-align:center;
+  }
+  .missing-fields{
+    left:50vw;
+    bottom:11vh;
+    font-size:3vw;
   }
 }
