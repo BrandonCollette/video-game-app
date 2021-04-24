@@ -3,7 +3,6 @@ import Carousel from "../components/carousel";
 import PostComment from '../components/postcomment';
 import GameRating from '../components/gamerating';
 import Navbar from '../components/navbar';
-import { Route, Link, withRouter, useParams } from 'react-router-dom';
 
 function GameCard({ event, averageRating }) {
     const {id, name, rating, cover, platforms,summary,involved_companies,genres,age_ratings,screenshots,videos} = event;
@@ -248,7 +247,6 @@ if(screenClicked==="trailer"){
             </div>
 
         <div className="card bg-dark text-white mb-2 mt-1 mx-0 gCard" style={{padding: "2vh"}}>
-            {/*<i className="fas fa-arrow-left" />*/}
             <h1 className="display-5 text-white text-center">{name}</h1>
             <hr className="text-white"/>
 
