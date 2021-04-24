@@ -37,7 +37,7 @@ export default class PostComment extends React.Component{
     constructor(props){
         super(props);
 
-        this.state = {name:'',commentBody:'',comments:null,newComment:0,rating:'',ratings:null,commentId:null,gameId:null};
+        this.state = {name:'',commentBody:'',comments:null,newComment:0,rating:'',ratings:null,commentId:null,gameId:null,field:false};
 
         this.handleNameChange = this.handleNameChange.bind(this);
         this.handleCommentChange = this.handleCommentChange.bind(this);
@@ -100,7 +100,7 @@ export default class PostComment extends React.Component{
         const gameStr = JSON.stringify(gameId);
         this.setState({ratings:this.state.rating,gameId:gameId});
         if(name !== "" && comment !== "") {
-
+            this.setState({field:false});
             Promise.all([
                 fetch('/api/comments',{
                     method:'POST',
@@ -116,7 +116,7 @@ export default class PostComment extends React.Component{
 
         }
             else{
-                console.log('comment not allowed');
+                this.setState({field:true});
             }
         }
 
@@ -127,44 +127,92 @@ export default class PostComment extends React.Component{
                 <></>
             )
         }
+        //if one of the comment fields is empty
+        if(this.state.field === true){
+            return(
+                <>
+                <div className="mx-0 card bg-dark aContainer mb-2">
+                    <div className="row my-1">
+                        <div className="col-sm-12 mx-0">
+                            <div className="card bg-dark mx-2 comments">
+                                <div className="card-heaader text-white my-3">
+                                </div>
+                                <form className="d-flex commentForm" onSubmit={this.handleSubmit}>
+                                    <input className="form-control me-2 col-sm-* input-lg nameInput position-absolute top-0 start-0"
+                                           placeholder="Name" aria-label="Search" type='text'
+                                           value={this.state.name}
+                                           onChange={this.handleNameChange}/>
+                                    <input className="form-control me-2 col-sm-* input-lg comInput"
+                                           placeholder="Leave a Comment" aria-label="Search" type='text'
+                                           value={this.state.commentBody}
+                                           onChange={this.handleCommentChange}/>
+                                    <p className="text-danger missing-fields">Missing Required Field</p>
+                                    <button className="btn btn-primary w-25 subButton" type="submit" value='submit'>Submit</button>
 
-        return(
-            <>
-            <div className="mx-0 card bg-dark aContainer mb-2">
-                <div className="row my-1">
-                    <div className="col-sm-12 mx-0">
-                        <div className="card bg-dark mx-2 comments">
-                            <div className="card-heaader text-white my-3">
+
+                                </form>
                             </div>
-                            <form className="d-flex commentForm" onSubmit={this.handleSubmit}>
-                                <input className="form-control me-2 col-sm-* input-lg nameInput position-absolute top-0 start-0"
-                                       placeholder="Name" aria-label="Search" type='text'
-                                       value={this.state.name}
-                                       onChange={this.handleNameChange}/>
-                                <input className="form-control me-2 col-sm-* input-lg comInput"
-                                       placeholder="Leave a Comment" aria-label="Search" type='text'
-                                       value={this.state.commentBody}
-                                       onChange={this.handleCommentChange}/>
-                                <button className="btn btn-primary w-25 subButton" type="submit" value='submit'>Submit</button>
-
-
-                            </form>
                         </div>
                     </div>
                 </div>
-            </div>
-                <ul className="list-group list-group-flush mx-0">
-                    {
-                        comments.length
-                            ? comments.map((event) => {
-                                return(
-                                <CommentItem key={event.commentId} event={event} ratings={this.state.ratings} title={this.props.title}  />
-                                )
-                            })
-                            : <li className="list-group-item mb-3">No Comments</li>
-                    }
-                </ul>
+                    <ul className="list-group list-group-flush mx-0">
+                        {
+                            comments.length
+                                ? comments.map((event) => {
+                                    return(
+                                        <CommentItem key={event.commentId} event={event} ratings={this.state.ratings} title={this.props.title}  />
+                                    )
+                                })
+                                : <li className="list-group-item mb-3">No Comments</li>
+                        }
+                    </ul>
                 </>
-        );
+            )
+        }
+        //if the comment fields are not empty
+        if(this.state.field===false) {
+            return (
+                <>
+                    <div className="mx-0 card bg-dark aContainer mb-2">
+                        <div className="row my-1">
+                            <div className="col-sm-12 mx-0">
+                                <div className="card bg-dark mx-2 comments">
+                                    <div className="card-heaader text-white my-3">
+                                    </div>
+                                    <form className="d-flex commentForm" onSubmit={this.handleSubmit}>
+                                        <input
+                                            className="form-control me-2 col-sm-* input-lg nameInput position-absolute top-0 start-0"
+                                            placeholder="Name" aria-label="Search" type='text'
+                                            value={this.state.name}
+                                            onChange={this.handleNameChange}/>
+                                        <input className="form-control me-2 col-sm-* input-lg comInput"
+                                               placeholder="Leave a Comment" aria-label="Search" type='text'
+                                               value={this.state.commentBody}
+                                               onChange={this.handleCommentChange}/>
+                                        <button className="btn btn-primary w-25 subButton" type="submit"
+                                                value='submit'>Submit
+                                        </button>
+
+
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <ul className="list-group list-group-flush mx-0">
+                        {
+                            comments.length
+                                ? comments.map((event) => {
+                                    return(
+                                    <CommentItem key={event.commentId} event={event} ratings={this.state.ratings} title={this.props.title}  />
+                                    )
+                                })
+                                : <li className="list-group-item mb-3">No Comments</li>
+                        }
+                    </ul>
+                </>
+            );
+        }
+
     }
 }
