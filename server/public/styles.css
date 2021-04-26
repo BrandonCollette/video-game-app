@@ -25,6 +25,7 @@ body {
 
 .navTitle{
   font-size:0.9vw;
+  white-space:nowrap;
 }
 .xbox{
   background: rgb(23,213,0);
