@@ -3,7 +3,7 @@ import React from 'react';
 export default function Carousel({ screenshots }){
     if(!screenshots){
         return(
-            <h1>No Screenshots Available</h1>
+            <h1 className="noScreenShots">No Screenshots Available</h1>
         )
     }
     else {
