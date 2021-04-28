@@ -266,6 +266,11 @@ body {
   left:32vw;
   bottom:11vh;
 }
+.noScreenShots{
+  text-align:center;
+  margin-top:22vh;
+  margin-bottom:22vh;
+}
 
 @media only screen and (max-width: 1442px){
   .bigInput{

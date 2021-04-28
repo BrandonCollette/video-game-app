@@ -25,9 +25,13 @@ function GameCard({ event, averageRating }) {
     const gameId = event.id;
     let ageRating = null;
     let company = "unknown";
+    let image = null;
 
     if(involved_companies){
         company = involved_companies[0].company.name;
+    }
+    if(screenshots){
+        image = screenshots[0].image_id;
     }
     let genre = "none";
     if(genres){
@@ -98,7 +102,7 @@ if(screenClicked === "summary") {
             <div className="behindBackground" />
 
             <div className="gameBackground" >
-                <img src={`https://images.igdb.com/igdb/image/upload/t_1080p/${screenshots[0].image_id}.jpg`} alt="image 1" />
+                <img src={`https://images.igdb.com/igdb/image/upload/t_1080p/${image}.jpg`} alt="image 1" />
             </div>
 
             <div className="card bg-dark text-white mb-2 mt-1 mx-0 gCard" style={{padding: "2vh"}}>
@@ -183,7 +187,7 @@ if(screenClicked==="screenshots"){
             <div className="behindBackground" />
 
             <div className="gameBackground" >
-                <img src={`https://images.igdb.com/igdb/image/upload/t_1080p/${screenshots[0].image_id}.jpg`} alt="image 1" />
+                <img src={`https://images.igdb.com/igdb/image/upload/t_1080p/${image}.jpg`} alt="image 1" />
             </div>
 
         <div className="card bg-dark text-white mb-2 mt-1 mx-0 gCard" style={{padding: "2vh"}}>
@@ -243,7 +247,7 @@ if(screenClicked==="trailer"){
             <div className="behindBackground" />
 
             <div className="gameBackground" >
-                <img src={`https://images.igdb.com/igdb/image/upload/t_1080p/${screenshots[0].image_id}.jpg`} alt="image 1" />
+                <img src={`https://images.igdb.com/igdb/image/upload/t_1080p/${image}.jpg`} alt="image 1" />
             </div>
 
         <div className="card bg-dark text-white mb-2 mt-1 mx-0 gCard" style={{padding: "2vh"}}>
