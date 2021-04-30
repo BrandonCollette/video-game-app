@@ -113,7 +113,7 @@ export default class PostComment extends React.Component{
                 this.setState({newComment: this.state.newComment += 1});
 
             });
-
+            this.setState({name:"",commentBody:""});
         }
             else{
                 this.setState({field:true});
