@@ -84,7 +84,7 @@ class Navbar extends React.Component{
                     className={`navbar navbar-expand-lg navbar-light bg-dark mb-5 sticky-top defNavbar ${this.state.system}`}>
                     <div className="container-fluid sticky-top">
                         <Link className="navbar-brand text-danger textGlow mainLogo" to="/">GAMESCORE</Link>
-                        <button className="navbar-toggler" type="button" data-bs-toggle="collapse"
+                        <button className="navbar-toggler navbar-dark" type="button" data-bs-toggle="collapse"
                                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                                 aria-expanded="false" aria-label="Toggle navigation">
                             <span className="navbar-toggler-icon"/>
@@ -140,7 +140,7 @@ class Navbar extends React.Component{
                         className={`navbar navbar-expand-lg navbar-light bg-dark mb-5 sticky-top defNavbar ${this.state.system}`}>
                         <div className="container-fluid sticky-top">
                             <Link className="navbar-brand text-danger textGlow mainLogo" to="/">GAMESCORE</Link>
-                            <button className="navbar-toggler" type="button" data-bs-toggle="collapse"
+                            <button className="navbar-toggler navbar-dark" type="button" data-bs-toggle="collapse"
                                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                                     aria-expanded="false" aria-label="Toggle navigation">
                                 <span className="navbar-toggler-icon"/>
@@ -198,7 +198,7 @@ class Navbar extends React.Component{
                     className={`navbar navbar-expand-lg navbar-light bg-dark mb-5 sticky-top defNavbar ${this.state.system}`}>
                     <div className="container-fluid sticky-top">
                         <Link className="navbar-brand text-danger textGlow mainLogo" to="/">GAMESCORE</Link>
-                        <button className="navbar-toggler" type="button" data-bs-toggle="collapse"
+                        <button className="navbar-toggler navbar-dark" type="button" data-bs-toggle="collapse"
                                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                                 aria-expanded="false" aria-label="Toggle navigation">
                             <span className="navbar-toggler-icon"/>
