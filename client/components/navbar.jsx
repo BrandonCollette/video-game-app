@@ -121,7 +121,7 @@ class Navbar extends React.Component{
                                        value={this.state.value}
                                        onChange={this.handleChange}/>
 
-                                    <Link className="btn btn-outline-success searchButton" type="submit" value='submit' results={searchResults} search={this.state.value}
+                                    <Link className="btn btn-outline-info searchButton" type="submit" value='submit' results={searchResults} search={this.state.value}
                                             to={`/search/${this.state.address}`}>Search
                                     </Link>
 
@@ -177,7 +177,7 @@ class Navbar extends React.Component{
                                            value={this.state.value}
                                            onChange={this.handleChange}/>
                                     {/*<Link className="btn btn-outline-success" type="submit" value='submit' to="/search" results={searchResults} search={this.state.value} >Search</Link>*/}
-                                    <Link className="btn btn-outline-success searchButton" type="submit" value='submit' results={searchResults} search={this.state.value}
+                                    <Link className="btn btn-outline-info searchButton" type="submit" value='submit' results={searchResults} search={this.state.value}
                                             to={`/search/${this.state.address}`}>Search
                                     </Link>
                                 </form>
@@ -235,7 +235,7 @@ class Navbar extends React.Component{
                                        value={this.state.value}
                                        onChange={this.handleChange}/>
                                 {/*<Link className="btn btn-outline-success" type="submit" value='submit' to="/search" results={searchResults} search={this.state.value} >Search</Link>*/}
-                                <Link className="btn btn-outline-success" type="submit" value='submit' results={searchResults} search={this.state.value}
+                                <Link className="btn btn-outline-info" type="submit" value='submit' results={searchResults} search={this.state.value}
                                         to={`/search/${this.state.address}`}>Search
                                 </Link>
                             </form>

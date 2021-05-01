@@ -112,15 +112,15 @@ if(screenClicked === "summary") {
                 <div className="btn-group d-flex justify-content-center" role="group"
                      aria-label="Basic radio toggle button group">
                     <input type="radio" className="btn-check" name="btnradio" id="btnradio1" autoComplete="off"/>
-                    <label className="btn btn-outline-primary buttonWidth" htmlFor="btnradio1" onClick={summaryButton}>SUMMARY</label>
+                    <label className="btn btn-outline-info buttonWidth" htmlFor="btnradio1" onClick={summaryButton}>SUMMARY</label>
 
                     <input type="radio" className="btn-check" name="btnradio" id="btnradio2" autoComplete="off"/>
-                    <label className="btn btn-outline-primary buttonWidth" onClick={screenButton}
+                    <label className="btn btn-outline-info buttonWidth" onClick={screenButton}
                            htmlFor="btnradio2">SCREENSHOTS</label>
 
                     <input type="radio" className="btn-check" name="btnradio" id="btnradio3"
                            autoComplete="off"/>
-                    <label className="btn btn-outline-primary buttonWidth"
+                    <label className="btn btn-outline-info buttonWidth"
                            htmlFor="btnradio3" onClick={trailerButton}>TRAILER</label>
                 </div>
 
@@ -135,13 +135,13 @@ if(screenClicked === "summary") {
                             <div className="mt-3">USER RATING:</div>
                             <h1><span className="badge bg-success m-1 theRating">{Math.round(endRating)}</span></h1>
                             <div className="sumPlat">
-                                <div className="text-primary">
+                                <div className="text-info">
                                     Summary:
                                 </div>
                                 <div className="summaryText">
                                     {summary}
                                 </div>
-                                <div className="text-primary">
+                                <div className="text-info">
                                     Platform:
                                 </div>
                                 <div>
@@ -156,17 +156,17 @@ if(screenClicked === "summary") {
                             <div className="gameDetailsContainer mt-4" style={{fontsize: "2vh"}}>
 
                                 <div className="gameDetail mt-3">
-                                    <div className="text-primary"> Developer:</div>
+                                    <div className="text-info"> Developer:</div>
                                     <div> {company}<br/></div>
                                 </div>
 
                                 <div className="gameDetail mt-3">
-                                    <div className="text-primary"> Genre(s):</div>
+                                    <div className="text-info"> Genre(s):</div>
                                     <div>{genre}<br/></div>
                                 </div>
 
                                 <div className="gameDetail mt-3">
-                                    <div className="text-primary">(Age)Rating:</div>
+                                    <div className="text-info">(Age)Rating:</div>
                                     <div>{ageRating}</div>
                                 </div>
                             </div>
@@ -198,15 +198,15 @@ if(screenClicked==="screenshots"){
             <div className="btn-group d-flex justify-content-center" role="group"
                  aria-label="Basic radio toggle button group">
                 <input type="radio" className="btn-check" name="btnradio" id="btnradio1" autoComplete="off"/>
-                <label className="btn btn-outline-primary buttonWidth" htmlFor="btnradio1" onClick={summaryButton}>SUMMARY</label>
+                <label className="btn btn-outline-info buttonWidth" htmlFor="btnradio1" onClick={summaryButton}>SUMMARY</label>
 
                 <input type="radio" className="btn-check" name="btnradio" id="btnradio2" autoComplete="off"/>
-                <label className="btn btn-outline-primary buttonWidth" onClick={screenButton}
+                <label className="btn btn-outline-info buttonWidth" onClick={screenButton}
                        htmlFor="btnradio2">SCREENSHOTS</label>
 
                 <input type="radio" className="btn-check" name="btnradio" id="btnradio3"
                        autoComplete="off"/>
-                <label className="btn btn-outline-primary buttonWidth"
+                <label className="btn btn-outline-info buttonWidth"
                        htmlFor="btnradio3" onClick={trailerButton}>TRAILER</label>
             </div>
 
@@ -257,15 +257,15 @@ if(screenClicked==="trailer"){
             <div className="btn-group d-flex justify-content-center" role="group"
                  aria-label="Basic radio toggle button group">
                 <input type="radio" className="btn-check" name="btnradio" id="btnradio1" autoComplete="off"/>
-                <label className="btn btn-outline-primary buttonWidth" htmlFor="btnradio1" onClick={summaryButton}>SUMMARY</label>
+                <label className="btn btn-outline-info buttonWidth" htmlFor="btnradio1" onClick={summaryButton}>SUMMARY</label>
 
                 <input type="radio" className="btn-check" name="btnradio" id="btnradio2" autoComplete="off"/>
-                <label className="btn btn-outline-primary buttonWidth" onClick={screenButton}
+                <label className="btn btn-outline-info buttonWidth" onClick={screenButton}
                        htmlFor="btnradio2">SCREENSHOTS</label>
 
                 <input type="radio" className="btn-check" name="btnradio" id="btnradio3"
                        autoComplete="off"/>
-                <label className="btn btn-outline-primary buttonWidth"
+                <label className="btn btn-outline-info buttonWidth"
                        htmlFor="btnradio3" onClick={trailerButton}>TRAILER</label>
             </div>
 
