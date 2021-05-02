@@ -41,13 +41,12 @@ class Navbar extends React.Component{
             const newSystem= this.props.system+"Mobile";
             this.setState({system: this.props.system,mobile:newSystem});
         }
-        if(this.props.match.params.system) {
+        if(this.props.match.params.system && this.props.match.params.search) {
             const background = this.props.match.params.system+"Background";
             $('.colorBackground').addClass(background);
             this.setState({system:this.props.match.params.system});
             this.setState({search:this.props.match.params.search});
             const search = this.props.match.params.search;
-            // this.props.onSubmit(this.state.value);
             fetch('/api/search', {
                 method:'POST',
                 headers: { "Content-Type": "application/json" },
