@@ -271,6 +271,9 @@ body {
   margin-top:22vh;
   margin-bottom:22vh;
 }
+.detailsButton:hover{
+  box-shadow: 0 0 10px 2px #0deaea;
+}
 
 @media only screen and (max-width: 1442px){
   .bigInput{
