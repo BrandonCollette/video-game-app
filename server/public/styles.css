@@ -233,7 +233,7 @@ body {
   margin-left:1.5vh;
 }
 .backArrow:hover{
-  text-shadow: 0 0 8px red;
+  text-shadow: 0 0 8px #00ffe6;
 }
 .bruhSpin{
   position:absolute;
