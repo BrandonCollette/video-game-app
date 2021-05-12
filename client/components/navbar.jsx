@@ -130,10 +130,6 @@ class Navbar extends React.Component{
                                        value={this.state.value}
                                        onChange={this.handleChange}/>
 
-                                    {/*<Link className="btn btn-outline-info searchButton" type="submit" value='submit' results={searchResults} search={this.state.value}*/}
-                                    {/*        to={`/search/${this.state.address}`}>Search*/}
-                                    {/*</Link>*/}
-
                                     <SearchButton results={searchResults} search={this.state.value} address={`/search/${this.state.address}`} searchCheck={this.state.searchCheck} />
 
                             </form>
@@ -187,9 +183,6 @@ class Navbar extends React.Component{
                                            onKeyPress={event => this.handleKey(event)}
                                            value={this.state.value}
                                            onChange={this.handleChange}/>
-                                    {/*<Link className="btn btn-outline-info searchButton" type="submit" value='submit' results={searchResults} search={this.state.value}*/}
-                                    {/*        to={`/search/${this.state.address}`}>Search*/}
-                                    {/*</Link>*/}
 
                                     <SearchButton results={searchResults} search={this.state.value} address={`/search/${this.state.address}`} searchCheck={this.state.searchCheck} />
 
@@ -248,9 +241,6 @@ class Navbar extends React.Component{
                                        onKeyPress={event => this.handleKey(event)}
                                        value={this.state.value}
                                        onChange={this.handleChange}/>
-                                {/*<Link className="btn btn-outline-info" type="submit" value='submit' results={searchResults} search={this.state.value}*/}
-                                {/*        to={`/search/${this.state.address}`}>Search*/}
-                                {/*</Link>*/}
 
                                 <SearchButton results={searchResults} search={this.state.value} address={`/search/${this.state.address}`} searchCheck={this.state.searchCheck} />
 
