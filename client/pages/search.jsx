@@ -20,20 +20,6 @@ export default class Search extends React.Component {
     render() {
         const { results } = this.state;
 
-        // let searchTimer = null;
-        // if(this.state.searchVerify===true){
-        //     clearTimeout(searchTimer);
-        //     console.log('cancel timer');
-        // }
-        // clearTimeout(searchTimer);
-        // searchTimer = setTimeout(function () {
-        //     history.pushState("/empty", 'empty', '/empty');
-        //     history.back();
-        //     console.log('search is undefined');
-        // }, 3500);
-
-
-
         if (!results) {
             return (
                 <div className="bruhSpin">
