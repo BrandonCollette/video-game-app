@@ -2,13 +2,14 @@ import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import Search from '../pages/search';
 import PopularTitles from '../components/populartitles';
+import SearchButton from '../components/searchbutton';
 
 class Navbar extends React.Component{
     constructor(props) {
         super(props);
 
 
-        this.state = ({value:''}, {searchResults:null}, {search:''}, {parameters:this.props.match.params},{address:null},{system:null},{mobile:null});
+        this.state = ({value:''}, {searchResults:null}, {search:''}, {parameters:this.props.match.params},{address:null},{system:null},{mobile:null},{searchCheck:false});
 
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -19,6 +20,12 @@ class Navbar extends React.Component{
 
      async handleChange(event) {
         await this.setState({value:event.target.value});
+        if(this.state.value===""){
+            this.setState({searchCheck:false});
+        }
+        else{
+            this.setState({searchCheck:true});
+        }
         this.defineUrl();
     }
 
@@ -67,7 +74,10 @@ class Navbar extends React.Component{
 
     handleKey(event){
         const { history } = this.props;
-        if(event.charCode==13){
+        if(event.charCode==13 && this.state.searchCheck===false){
+
+        }
+        else if(event.charCode==13 && this.state.searchCheck===true){
             history.push(`/search/${this.state.address}`);
         }
     }
@@ -120,9 +130,11 @@ class Navbar extends React.Component{
                                        value={this.state.value}
                                        onChange={this.handleChange}/>
 
-                                    <Link className="btn btn-outline-info searchButton" type="submit" value='submit' results={searchResults} search={this.state.value}
-                                            to={`/search/${this.state.address}`}>Search
-                                    </Link>
+                                    {/*<Link className="btn btn-outline-info searchButton" type="submit" value='submit' results={searchResults} search={this.state.value}*/}
+                                    {/*        to={`/search/${this.state.address}`}>Search*/}
+                                    {/*</Link>*/}
+
+                                    <SearchButton results={searchResults} search={this.state.value} address={`/search/${this.state.address}`} searchCheck={this.state.searchCheck} />
 
                             </form>
                         </div>
@@ -175,10 +187,13 @@ class Navbar extends React.Component{
                                            onKeyPress={event => this.handleKey(event)}
                                            value={this.state.value}
                                            onChange={this.handleChange}/>
-                                    {/*<Link className="btn btn-outline-success" type="submit" value='submit' to="/search" results={searchResults} search={this.state.value} >Search</Link>*/}
-                                    <Link className="btn btn-outline-info searchButton" type="submit" value='submit' results={searchResults} search={this.state.value}
-                                            to={`/search/${this.state.address}`}>Search
-                                    </Link>
+                                    {/*<Link className="btn btn-outline-info searchButton" type="submit" value='submit' results={searchResults} search={this.state.value}*/}
+                                    {/*        to={`/search/${this.state.address}`}>Search*/}
+                                    {/*</Link>*/}
+
+                                    <SearchButton results={searchResults} search={this.state.value} address={`/search/${this.state.address}`} searchCheck={this.state.searchCheck} />
+
+
                                 </form>
                             </div>
                         </div>
@@ -233,15 +248,18 @@ class Navbar extends React.Component{
                                        onKeyPress={event => this.handleKey(event)}
                                        value={this.state.value}
                                        onChange={this.handleChange}/>
-                                {/*<Link className="btn btn-outline-success" type="submit" value='submit' to="/search" results={searchResults} search={this.state.value} >Search</Link>*/}
-                                <Link className="btn btn-outline-info" type="submit" value='submit' results={searchResults} search={this.state.value}
-                                        to={`/search/${this.state.address}`}>Search
-                                </Link>
+                                {/*<Link className="btn btn-outline-info" type="submit" value='submit' results={searchResults} search={this.state.value}*/}
+                                {/*        to={`/search/${this.state.address}`}>Search*/}
+                                {/*</Link>*/}
+
+                                <SearchButton results={searchResults} search={this.state.value} address={`/search/${this.state.address}`} searchCheck={this.state.searchCheck} />
+
+
                             </form>
                         </div>
                     </div>
                 </nav>
-            <Search results={searchResults} search={this.state.search} system={this.state.system} />
+            <Search results={searchResults} search={this.state.search} system={this.state.system} verify={true} />
             </div>
         );
         }
