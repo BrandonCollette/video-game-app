@@ -1,4 +1,5 @@
 import React from 'react';
+import { Route, Link } from 'react-router-dom';
 import Navbar from '../components/navbar';
 import SearchItem from '../components/searchitem';
 
@@ -8,14 +9,31 @@ export default class Search extends React.Component {
 
         this.state = {
             results: this.props.results,
+            searchVerify:this.props.verify
         };
     }
 
     componentDidMount(){
+
     }
 
     render() {
         const { results } = this.state;
+
+        // let searchTimer = null;
+        // if(this.state.searchVerify===true){
+        //     clearTimeout(searchTimer);
+        //     console.log('cancel timer');
+        // }
+        // clearTimeout(searchTimer);
+        // searchTimer = setTimeout(function () {
+        //     history.pushState("/empty", 'empty', '/empty');
+        //     history.back();
+        //     console.log('search is undefined');
+        // }, 3500);
+
+
+
         if (!results) {
             return (
                 <div className="bruhSpin">
@@ -26,9 +44,13 @@ export default class Search extends React.Component {
                     </p>
                 </div>
             )
+
         }
+
         else {
+
             $('.bruhSpin').addClass('hidden');
+
             return (
                 <div>
                     <div className="aContainer">
