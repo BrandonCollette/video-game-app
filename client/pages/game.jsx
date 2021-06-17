@@ -94,6 +94,15 @@ function GameCard({ event, averageRating }) {
         setPage("trailer");
     }
 
+    //set the image id
+    let imageId = null;
+    if(!cover){
+        imageId = 'co2f0t';
+    }
+    else if(cover){
+        imageId = cover.image_id;
+    }
+
 
 if(screenClicked === "summary") {
     return (
@@ -128,7 +137,7 @@ if(screenClicked === "summary") {
                 <div className="container text-white">
                     <div className="row">
                         <div className="col-sm">
-                            <img src={`https://images.igdb.com/igdb/image/upload/t_cover_big/${cover.image_id}.jpg`}
+                            <img src={`https://images.igdb.com/igdb/image/upload/t_cover_big/${imageId}.jpg`}
                                  className="rounded float-start img-fluid w-100 mt-4" alt="..."/>
                         </div>
                         <div className="col-sm ">
