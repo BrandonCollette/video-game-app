@@ -58,6 +58,15 @@ function GameItem({ event,system }, props) {
         address = system+"/"+id;
     }
 
+    //set the image id
+    let imageId = null;
+    if(!cover){
+        imageId = 'co2f0t';
+    }
+    else if(cover){
+        imageId = cover.image_id;
+    }
+
     if(clicked===false && theRating !== null) {
 
         return (
@@ -65,7 +74,7 @@ function GameItem({ event,system }, props) {
                 <div className="card bg-dark text-white h-100">
                     <div className="imgContainer vTilt">
                         <Link to={`/game/${address}`} onClick={clickButton} aria-current="page">
-                            <div style = {{ backgroundImage: `url("https://images.igdb.com/igdb/image/upload/t_cover_big/${cover.image_id}.jpg")` }}
+                            <div style = {{ backgroundImage: `url("https://images.igdb.com/igdb/image/upload/t_cover_big/${imageId}.jpg")` }}
                                  className="card-img-top img-fluid gameImg"
                             />
                         </Link>
@@ -92,7 +101,7 @@ function GameItem({ event,system }, props) {
                 <div className="card bg-dark text-white h-100">
                     <div className="imgContainer vTilt">
                         <Link to={`/game/${address}`} onClick={clickButton} aria-current="page">
-                            <div style = {{ backgroundImage: `url("https://images.igdb.com/igdb/image/upload/t_cover_big/${cover.image_id}.jpg")` }}
+                            <div style = {{ backgroundImage: `url("https://images.igdb.com/igdb/image/upload/t_cover_big/${imageId}.jpg")` }}
                                  className="card-img-top img-fluid gameImg"
                             />
                         </Link>
