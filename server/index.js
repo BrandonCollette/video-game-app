@@ -119,7 +119,7 @@ app.post('/api/game',(req,res) => {
         body:  platform,
         headers: { 'Accept': 'application/json',
                    'Client-ID': '7i5eel4xjpf149c9kf2jvt5u1tf31k',
-                   'Authorization': 'Bearer ba0fgen3szyfll99re7lqxa3h6wng4',
+                   'Authorization': 'Bearer kuaiaca47x5s5ebxfkj3vr8bhsvbij',
         },
     })
         .then(res => res.json())
@@ -140,7 +140,7 @@ app.post('/api/search',(req,res) => {
             headers: {
                 'Accept': 'application/json',
                 'Client-ID': '7i5eel4xjpf149c9kf2jvt5u1tf31k',
-                'Authorization': 'Bearer ba0fgen3szyfll99re7lqxa3h6wng4',
+                'Authorization': 'Bearer kuaiaca47x5s5ebxfkj3vr8bhsvbij',
             },
         })
             .then(res =>res.json())
