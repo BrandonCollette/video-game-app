@@ -72,6 +72,7 @@ app.post('/api/rating', (req, res) => {
 
 // app.use(staticMiddleware);
 
+
 // loads ratings
 app.get('/api/rating/:id', (req, res) => {
   const gameId = req.params.id;
