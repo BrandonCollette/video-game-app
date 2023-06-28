@@ -114,7 +114,7 @@ app.post('/api/game', (req, res) => {
     headers: {
       Accept: 'application/json',
       'Client-ID': '7i5eel4xjpf149c9kf2jvt5u1tf31k',
-      Authorization: 'Bearer 3lgrb2w5kec198r5psic6e3bt86m0z'
+      Authorization: 'Bearer wcswtqcbe489kp9w1ogolhnwbj6mxk'
     }
   })
     .then(res => res.json())
@@ -135,7 +135,7 @@ app.post('/api/search', (req, res) => {
     headers: {
       Accept: 'application/json',
       'Client-ID': '7i5eel4xjpf149c9kf2jvt5u1tf31k',
-      Authorization: 'Bearer 3lgrb2w5kec198r5psic6e3bt86m0z'
+      Authorization: 'Bearer wcswtqcbe489kp9w1ogolhnwbj6mxk'
     }
   })
     .then(res => res.json())
